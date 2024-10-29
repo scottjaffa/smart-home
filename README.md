@@ -3,5 +3,5 @@ Home automation tinkering
   
   
 
-[Equipment used](/equipment.md)
+[Equipment used](/equipment.md)  
 [Home Assistant configuration](/ha)
