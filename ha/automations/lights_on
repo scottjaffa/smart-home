@@ -1,0 +1,18 @@
+alias: Shabbat powder room enable
+description: ""
+mode: single
+triggers:
+  - type: turned_off
+    device_id: 5600214dc615b3458b4f99e68c84674a
+    entity_id: e1b020c5c28f0db4785fb1c46f066782
+    domain: switch
+    trigger: device
+conditions:
+  - condition: state
+    entity_id: input_boolean.shabbat_active
+    state: "on"
+actions:
+  - type: turn_on
+    device_id: 5600214dc615b3458b4f99e68c84674a
+    entity_id: e1b020c5c28f0db4785fb1c46f066782
+    domain: switch
