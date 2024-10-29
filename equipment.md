@@ -32,6 +32,7 @@ Aeotec ZW090
 # Sensors
 ##  Zwave
 * Zooz ZSE44
+* HomeSeer HS-FLS100-G2 (replacement floodlight motion sensor)
 ##  Wifi
 * IQAir Air Visual Pro
   
