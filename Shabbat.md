@@ -1,11 +1,12 @@
 # Shabbat automation  
 
 ## Goals  
-* one button Shabbat mode
+* one button Shabbat mode, or as close as I can get
 * automatically enabled and disabled at appropriate time, with override if away
 * Ability to enable manually, whether for early Shabbat or testing
 * Customizable - can adjust based on variables
 * Minimally confusing - don't do anything so fancy that it is hard to figure out
+* User friendly - aka wife acceptance factor
 
   ## Approach  
   Using the Jewish Calendar integration, trigger an automation using the issur melacha entity (binary_sensor.jewish_calendar_issur_melacha_in_effect)  
