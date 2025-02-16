@@ -91,7 +91,7 @@ blueprint:
       
     food_settings:
       name: "Food"
-      icon: mdi:lightbulb-on-outline
+      icon: mdi:food
       collapsed: true
 
     vacuum_settings:
