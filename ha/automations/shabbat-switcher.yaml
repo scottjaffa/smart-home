@@ -34,8 +34,6 @@ blueprint:
           name: Sensor which activates Shabbat/Yom Tov
           description: >
             The sensor which activates this automation, generally from Jewish Calendar
-
-
           default: binary_sensor.jewish_calendar_issur_melacha_in_effect
           selector:
             entity:
@@ -44,17 +42,17 @@ blueprint:
                   - binary_sensor
               multiple: false
 
-    disable_trigger:
-      name: Shabbat Mode Disable
-        description: >
-          This prevents the house from going into Shabbat mode
-        default: input_boolean.away
-        selector:
-          entity:
-            filter:
-              domain:
-                - binary_sensor
-            multiple: true
+        disable_trigger:
+          name: Shabbat Mode Disable
+            description: >
+              This prevents the house from going into Shabbat mode
+            default: input_boolean.away
+            selector:
+              entity:
+                filter:
+                  domain:
+                    - binary_sensor
+                multiple: true
 
 
 
