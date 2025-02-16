@@ -26,7 +26,7 @@ blueprint:
   domain: automation
   input:
     trigger:
-      name: "Trigger *"
+      name: "Config *"
       icon: mdi:cog-outline
       collapsed: true
       input:
@@ -43,4 +43,67 @@ blueprint:
                 domain:
                   - binary_sensor
               multiple: false
-    
+              
+    start_settings:
+      name: "Start *"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+
+    end_settings:
+      name: "End *"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+              
+    evening_settings:
+      name: "Evening"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+
+    night_settings:
+      name: "Night"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+              
+    morning_settings:
+      name: "Morning"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+
+    lunch_settings:
+      name: "Lunch"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+              
+    afternoon_settings:
+      name: "Afternoon"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+
+    bedroom_settings:
+      name: "Bedroom"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+             
+    Bathroom_settings:
+      name: "Bathroom"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+
+    vacuum_settings:
+      name: "Vacuum"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+             
+    lighting_settings:
+      name: "Lighting"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+
+    other_settings:
+      name: "Other"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+
+
+
+      
