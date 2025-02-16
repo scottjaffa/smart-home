@@ -51,7 +51,7 @@ blueprint:
               entity:
                 filter:
                   domain:
-                    - binary_sensor
+                    - input_sensor
                 multiple: true
 
 
