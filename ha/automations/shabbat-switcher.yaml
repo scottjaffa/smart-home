@@ -41,18 +41,17 @@ blueprint:
                 domain:
                   - binary_sensor
               multiple: false
-
         disable_trigger:
           name: Shabbat Mode Disable
-            description: >
-              This prevents the house from going into Shabbat mode
-            default: 
-            selector:
-              entity:
-                filter:
-                  domain:
-                    - binary_sensor
-                multiple: true
+          description: >
+            This prevents the house from going into Shabbat mode
+          default: input_boolean.shabbat_active
+          selector:
+            entity:
+              filter:
+                domain:
+                  - binary_sensor
+              multiple: true
 
 
 
