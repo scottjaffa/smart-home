@@ -88,6 +88,11 @@ blueprint:
       name: "Bathroom"
       icon: mdi:lightbulb-on-outline
       collapsed: true
+      
+    food_settings:
+      name: "Food"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
 
     vacuum_settings:
       name: "Vacuum"
