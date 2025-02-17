@@ -15,7 +15,7 @@ blueprint:
     
     **Recommended**
     
-    An input boolean for away mode - default is input_boolean.shabbat_active
+    An input boolean for away mode - default is input_boolean.away
 
 
 
