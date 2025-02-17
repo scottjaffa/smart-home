@@ -48,29 +48,61 @@ blueprint:
       name: "Start *"
       icon: mdi:lightbulb-on-outline
       collapsed: true
+      input:
+        start_scenes:
+          name: Start Scenes, Scripts, Automations
+          description: >
+            
+
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+              multiple: true
 
     end_settings:
       name: "End *"
       icon: mdi:lightbulb-on-outline
       collapsed: true
               
-    evening_settings:
-      name: "Evening"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-
     night_settings:
       name: "Night"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+      input:
+        evening_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+              multiple: true
+        night_time:
+          name: Night set time
+          description: >
+
+          default: "22:00:00"
+          selector:
+            time:
+
+    bedtime_settings:
+      name: "Bedtime"
       icon: mdi:lightbulb-on-outline
       collapsed: true
               
     morning_settings:
       name: "Morning"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-
-    lunch_settings:
-      name: "Lunch"
       icon: mdi:lightbulb-on-outline
       collapsed: true
               
