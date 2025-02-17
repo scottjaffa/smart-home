@@ -41,7 +41,7 @@ blueprint:
                 domain:
                   - binary_sensor
               multiple: false
-        shabbat_variable:
+        shabbat_status:
           name: Internal variable
           description: >
             The internal variable used to denote Shabbat mode for the house
