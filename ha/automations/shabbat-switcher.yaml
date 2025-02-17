@@ -26,7 +26,7 @@ blueprint:
   domain: automation
   input:
     values:
-      name: "Trigger *"
+      name: "Values *"
       icon: mdi:cog-outline
       collapsed: false
       input:
@@ -63,7 +63,7 @@ blueprint:
                 domain:
                   - input_boolean
               multiple: true
-        early_start_trigger:
+        early_start_time:
           name: Early Start Time
           description: >
             This is the latest time the house will go into Shabbat mode even if not yet candle lighting
@@ -87,7 +87,11 @@ mode: single
 
 variables:
   shabbat_trigger: !input shabbat_trigger
+  shabbat_status: !input shabbat_status
   shabbat_disable: !input shabbat_disable
+  early_start_time: !input early_start_time
+  erev_sensor: !input erev_sensor
+  
 
     
 triggers:
