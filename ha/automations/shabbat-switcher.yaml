@@ -5,12 +5,15 @@ blueprint:
 
     **Version: .1**
 
-    **Prerequisites**
-    The Jewish Calendar HA Integration:  https://www.home-assistant.io/integrations/jewish_calendar/
-
     Automation that evaluates conditions and switches HA to Shabbat Mode
 
-    Requires the Jewish Calendar integration
+    **Prerequisites**
+    The Jewish Calendar HA Integration:  https://www.home-assistant.io/integrations/jewish_calendar/
+    An input boolean to set Shabbat Mode for the house - default is input_boolean.shabbat_active
+    **Recommended**
+    An input boolean for away mode - default is input_boolean.shabbat_active
+
+
 
     <details>
     <summary>How it works:</summary>
@@ -65,6 +68,18 @@ blueprint:
                 domain:
                   - input_boolean
               multiple: true
+        enable_early_shabbat:
+          name: Enable Early Shabbat Mode (Optional)
+          description: >
+            This setting turns on Shabbat mode before candle lighting time.
+          default: early_shabbat_disabled
+          selector:
+            select:
+              options:
+                - label: Enable early Shabbat
+                  value: "early_shabat_enabled"
+                - label: Disable early Shabbat
+                  value: "early_shabbat_disabled"      
         early_start_time:
           name: Early Start Time
           description: >
@@ -91,6 +106,7 @@ variables:
   shabbat_trigger: !input shabbat_trigger
   shabbat_status: !input shabbat_status
   shabbat_disable: !input shabbat_disable
+  enable_early_shabbat: !input enable_early_shabbat
   early_start_time: !input early_start_time
   erev_sensor: !input erev_sensor
   
@@ -125,9 +141,10 @@ actions:
                     conditions:
                       - condition: trigger
                         id:
-                          - early_shabbat_time
+                          - early_shabbat_on
+                      - "{{ enable_early_shabbat == 'early_shabbat_enabled' }}"   
                       - condition: state
-                        entity_id: !input erev_sensor
+                        entity_id: binary_sensor.jewish_calendar_erev_shabbat_hag
                         state: "on"
               - condition: state
                 entity_id: !input shabbat_disable
