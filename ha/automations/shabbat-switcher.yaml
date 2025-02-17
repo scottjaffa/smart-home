@@ -41,6 +41,17 @@ blueprint:
                 domain:
                   - binary_sensor
               multiple: false
+        shabbat_variable:
+          name: Internal variable
+          description: >
+            The internal variable used to denote Shabbat mode for the house
+          default: input_boolean.shabbat_active
+          selector:
+            entity:
+              filter:
+                domain:
+                  - input_boolean
+              multiple: false
         shabbat_disable:
           name: Shabbat Mode Disable
           description: >
