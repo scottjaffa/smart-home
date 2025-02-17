@@ -41,7 +41,7 @@ blueprint:
                 domain:
                   - binary_sensor
               multiple: false
-        disable:
+        shabbat_disable:
           name: Shabbat Mode Disable
           description: >
             These prevent the house from going into Shabbat mode
@@ -68,7 +68,7 @@ mode: single
 
 variables:
   shabbat_trigger: !input shabbat_trigger
-  disable_trigger: !input disable_trigger
+  disable_trigger: !input shabbat_disable
 
     
 triggers:
@@ -83,7 +83,7 @@ actions:
           - condition: template
             value_template: "{{trigger.to_state.state == 'on'}}"
           - condition: state
-            entity_id: !input disable_trigger
+            entity_id: !input shabbat_disable
             state: "off"
             match: any
         sequence:
