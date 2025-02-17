@@ -5,6 +5,8 @@ blueprint:
 
     **Version: .1**
 
+    **Prerequisites**
+    The Jewish Calendar HA Integration:  https://www.home-assistant.io/integrations/jewish_calendar/
 
     Automation that evaluates conditions and switches HA to Shabbat Mode
 
