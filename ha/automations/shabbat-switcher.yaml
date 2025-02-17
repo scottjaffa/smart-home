@@ -73,7 +73,7 @@ blueprint:
                   - input_boolean
               multiple: true
         enable_early_shabbat:
-          name: Enable Early Shabbat Mode (Optional)
+          name: Early Shabbat Mode (Optional)
           description: >
             This setting turns on Shabbat mode before candle lighting time.
           default: early_shabbat_disabled
