@@ -25,7 +25,7 @@ blueprint:
     Required = *
   domain: automation
   input:
-    trigger:
+    values:
       name: "Trigger *"
       icon: mdi:cog-outline
       collapsed: false
@@ -56,7 +56,7 @@ blueprint:
           name: Early Start Time
           description: >
             This is the latest time the house will go into Shabbat mode even if not yet candle lighting
-          default: input_boolean.shabbat_active
+          default: []
           selector:
             entity:
               filter:
