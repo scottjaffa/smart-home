@@ -33,75 +33,70 @@ blueprint:
 
     Required = *
   domain: automation
-  input:
-    values:
-      name: "Values *"
-      icon: mdi:cog-outline
-      collapsed: false
-      input:
-        shabbat_trigger:
-          name: Sensor which activates Shabbat/Yom Tov
-          description: >
-            The sensor which activates this automation, generally from Jewish Calendar
-          default: binary_sensor.jewish_calendar_issur_melacha_in_effect
-          selector:
-            entity:
-              filter:
-                domain:
-                  - binary_sensor
-              multiple: false
-        shabbat_status:
-          name: Shabbat Status
-          description: >
-            The internal variable used to denote Shabbat mode for the house
-          default: input_boolean.shabbat_active
-          selector:
-            entity:
-              filter:
-                domain:
-                  - input_boolean
-              multiple: false
-        shabbat_disable:
-          name: Shabbat Mode Disable
-          description: >
-            Any of these evaluating to true prevent the house from going into Shabbat mode
-          default: input_boolean.away
-          selector:
-            entity:
-              filter:
-                domain:
-                  - input_boolean
-              multiple: true
-        enable_early_shabbat:
-          name: Early Shabbat Mode (Optional)
-          description: >
-            This setting turns on Shabbat mode before candle lighting time.
-          default: early_shabbat_disabled
-          selector:
-            select:
-              options:
-                - label: Enable early Shabbat
-                  value: "early_shabbat_enabled"
-                - label: Disable early Shabbat
-                  value: "early_shabbat_disabled"      
-        early_start_time:
-          name: Early Start Time
-          description: >
-            This is the latest time the house will go into Shabbat mode even if not yet candle lighting
-          default: "19:30:00"
-          selector:
-            time:
-        erev_sensor:
-          name: Sensor which identifies if it is erev shabbat
-          description: >
-            The sensor which activates this automation, generally from Jewish Calendar
-          default: binary_sensor.jewish_calendar_erev_shabbat_hag
-          selector:
-            entity:
-              filter:
-                domain:
-                  - binary_sensor
-              multiple: false
+    input:
+      shabbat_trigger:
+        name: Sensor which activates Shabbat/Yom Tov
+        description: >
+          The sensor which activates this automation, generally from Jewish Calendar
+        default: binary_sensor.jewish_calendar_issur_melacha_in_effect
+        selector:
+          entity:
+            filter:
+              domain:
+                - binary_sensor
+            multiple: false
+      shabbat_status:
+        name: Shabbat Status
+        description: >
+          The internal variable used to denote Shabbat mode for the house
+        default: input_boolean.shabbat_active
+        selector:
+          entity:
+            filter:
+              domain:
+                - input_boolean
+            multiple: false
+      shabbat_disable:
+        name: Shabbat Mode Disable
+        description: >
+          Any of these evaluating to true prevent the house from going into Shabbat mode
+        default: input_boolean.away
+        selector:
+          entity:
+            filter:
+              domain:
+                - input_boolean
+            multiple: true
+      enable_early_shabbat:
+        name: Early Shabbat Mode (Optional)
+        description: >
+          This setting turns on Shabbat mode before candle lighting time.
+        default: early_shabbat_disabled
+        selector:
+          select:
+            options:
+              - label: Enable early Shabbat
+                value: "early_shabbat_enabled"
+              - label: Disable early Shabbat
+                value: "early_shabbat_disabled"      
+      early_start_time:
+        name: Early Start Time
+        description: >
+          This is the latest time the house will go into Shabbat mode even if not yet candle lighting
+        default: "19:30:00"
+        selector:
+          time:
+      erev_sensor:
+        name: Sensor which identifies if it is erev shabbat
+        description: >
+          The sensor which activates this automation, generally from Jewish Calendar
+        default: binary_sensor.jewish_calendar_erev_shabbat_hag
+        selector:
+          entity:
+            filter:
+              domain:
+                - binary_sensor
+            multiple: false
             
 
 mode: single
