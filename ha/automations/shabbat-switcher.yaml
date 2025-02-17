@@ -77,7 +77,7 @@ blueprint:
             select:
               options:
                 - label: Enable early Shabbat
-                  value: "early_shabat_enabled"
+                  value: "early_shabbat_enabled"
                 - label: Disable early Shabbat
                   value: "early_shabbat_disabled"      
         early_start_time:
