@@ -93,38 +93,57 @@ variables:
   erev_sensor: !input erev_sensor
   
 
-    
+
 triggers:
-  - entity_id:
-      - !input shabbat_trigger
-    to: null
-    trigger: state
+  - trigger: state
+    entity_id: !input shabbat_trigger
+    to: "on"
+    from: "off"
+    id: shabbat_on
+  - trigger: state
+    entity_id: !input shabbat_trigger
+    from: "on"
+    to: "off"
+    id: shabbat_off
+  - trigger: time
+    at: !input early_start_time
+    id: early_shabbat_on
 conditions: []
 actions:
   - choose:
       - conditions:
-          - condition: template
-            value_template: "{{trigger.to_state.state == 'on'}}"
-          - condition: state
-            entity_id: !input shabbat_disable
-            state: "off"
-            match: any
+          - condition: and
+            conditions:
+              - condition: or
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_on
+                  - condition: and
+                    conditions:
+                      - condition: trigger
+                        id:
+                          - early_shabbat_time
+                      - condition: state
+                        entity_id: !input erev_sensor
+                        state: "on"
+              - condition: state
+                entity_id: !input shabbat_disable
+                state: "off"
         sequence:
-          - target:
-              entity_id: input_boolean.shabbat_active
+          - action: input_boolean.turn_on
+            metadata: {}
             data: {}
-            action: input_boolean.turn_on
+            target:
+              entity_id: !input shabbat_status
       - conditions:
-          - condition: template
-            value_template: "{{trigger.to_state.state == 'off'}}"
-          - condition: state
-            entity_id: input_boolean.shabbat_active
-            state: "on"
+          - condition: trigger
+            id:
+              - shabbat_off
         sequence:
-          - target:
-              entity_id: input_boolean.shabbat_active
+          - action: input_boolean.turn_off
+            metadata: {}
             data: {}
-            action: input_boolean.turn_off
-    default: []
-
-    
+            target:
+              entity_id: !input shabbat_status
+    default: []  
