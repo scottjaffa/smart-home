@@ -31,11 +31,10 @@ blueprint:
     Welcome to reach out for questions.
 
 
-    Required = *
   domain: automation
   input:
     shabbat_trigger:
-      name: Sensor which activates Shabbat/Yom Tov
+      name: Shabbat/Yom Tov Sensor
       description: >
         The sensor which activates this automation, generally from Jewish Calendar
       default: binary_sensor.jewish_calendar_issur_melacha_in_effect
@@ -57,7 +56,7 @@ blueprint:
               - input_boolean
           multiple: false
     shabbat_disable:
-      name: Shabbat Mode Disable
+      name: Disable Shabbat Mode (Optional)
       description: >
         Any of these evaluating to true prevent the house from going into Shabbat mode
       default: input_boolean.away
@@ -80,16 +79,18 @@ blueprint:
             - label: Disable early Shabbat
               value: "early_shabbat_disabled"      
     early_start_time:
-      name: Early Start Time
+      name: Early Start Time (Optional)
       description: >
         This is the latest time the house will go into Shabbat mode even if not yet candle lighting
+        **Must be set if early Shabbat mode is enabled**
       default: "19:30:00"
       selector:
         time:
     erev_sensor:
-      name: Sensor which identifies if it is erev shabbat
+      name: Sensor which identifies if it is erev shabbat (Optional)
       description: >
-        The sensor which activates this automation, generally from Jewish Calendar
+        The sensor which activates this automation, generally from Jewish Calendar  
+        **Must be set if early Shabbat mode is enabled.**
       default: binary_sensor.jewish_calendar_erev_shabbat_hag
       selector:
         entity:
