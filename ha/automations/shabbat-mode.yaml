@@ -62,7 +62,6 @@ blueprint:
                   - automation
                   - scene
                   - script
-              multiple: true
 
     end_settings:
       name: "End *"
@@ -87,7 +86,6 @@ blueprint:
                   - automation
                   - scene
                   - script
-              multiple: true
         night_time:
           name: Night set time
           description: >
