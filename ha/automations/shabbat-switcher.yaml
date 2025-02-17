@@ -67,13 +67,9 @@ blueprint:
           name: Early Start Time
           description: >
             This is the latest time the house will go into Shabbat mode even if not yet candle lighting
-          default: []
+          default: 19:30
           selector:
-            entity:
-              filter:
-                domain:
-                  - time
-              multiple: false
+            time:
 
 mode: single
 
