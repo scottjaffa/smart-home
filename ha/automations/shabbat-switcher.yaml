@@ -41,10 +41,10 @@ blueprint:
                 domain:
                   - binary_sensor
               multiple: false
-        disable_trigger:
+        disable:
           name: Shabbat Mode Disable
           description: >
-            This prevents the house from going into Shabbat mode
+            These prevent the house from going into Shabbat mode
           default: input_boolean.shabbat_active
           selector:
             entity:
@@ -52,8 +52,17 @@ blueprint:
                 domain:
                   - input_boolean
               multiple: true
-
-
+        early_start_trigger:
+          name: Early Start Time
+          description: >
+            This is the latest time the house will go into Shabbat mode even if not yet candle lighting
+          default: input_boolean.shabbat_active
+          selector:
+            entity:
+              filter:
+                domain:
+                  - time
+              multiple: false
 
 mode: single
 
