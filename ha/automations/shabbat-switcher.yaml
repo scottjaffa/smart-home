@@ -12,6 +12,7 @@ blueprint:
     The Jewish Calendar HA Integration:  https://www.home-assistant.io/integrations/jewish_calendar/
     
     An input boolean to set Shabbat Mode for the house - default is input_boolean.shabbat_active
+    
     **Recommended**
     
     An input boolean for away mode - default is input_boolean.shabbat_active
