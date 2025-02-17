@@ -153,6 +153,7 @@ actions:
               - condition: state
                 entity_id: !input shabbat_disable
                 state: "off"
+                match: any
         sequence:
           - action: input_boolean.turn_on
             metadata: {}
