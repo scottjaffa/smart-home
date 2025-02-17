@@ -67,17 +67,37 @@ blueprint:
       name: "End *"
       icon: mdi:lightbulb-on-outline
       collapsed: true
-              
-    night_settings:
-      name: "Night"
+
+                            
+    evening_settings:
+      name: "Evening"
       icon: mdi:lightbulb-on-outline
       collapsed: true
       input:
+        enable_evening_schedule:
+          name: Enable evening schedule
+          description: >
+            This setting enables the evening schedule.
+          default: evening_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable evening schedule
+                  value: "evening_schedule_enabled"
+                - label: Disable evening schedule
+                  value: "evening_schedule_disabled"      
+                  
+        night_time:
+          name: Evening set time
+          description: >
+
+          default: "22:00:00"
+          selector:
+            time:
         evening_scenes:
           name: Night Scenes, Scripts, Automations
           description: >
             
-
           default: []
           selector:
             target:
@@ -86,13 +106,44 @@ blueprint:
                   - automation
                   - scene
                   - script
+
+    night_settings:
+      name: "Night"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+      input:
+        enable_night_schedule:
+          name: Enable night schedule
+          description: >
+            This setting enables the night schedule.
+          default: night_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable night schedule
+                  value: "night_schedule_enabled"
+                - label: Disable night schedule
+                  value: "night_schedule_disabled"      
+                  
         night_time:
           name: Night set time
           description: >
 
-          default: "22:00:00"
+          default: "00:10:00"
           selector:
             time:
+        night_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
 
     bedtime_settings:
       name: "Bedtime"
