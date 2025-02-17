@@ -195,6 +195,16 @@ blueprint:
 
 
 shabbat_trigger: !input shabbat_trigger
+dinner_time: !input dinner_time
+evening_time: !input evening_time
+night_time: !input night_time
+wakeup_time: !input wakeup_time
+morning_time: !input morning_time
+lunch_time: !input lunch_time
+afternoon_time: !input afternoon_time
+dusk_use: !input dusk_use
+dusk_offset: !input dusk_offset
+bedtime_time: !input bedtime_time
 
 
 
@@ -202,7 +212,7 @@ shabbat_trigger: !input shabbat_trigger
 triggers:
   - trigger: state
     entity_id:
-      - input_boolean.shabbat_active
+      - !input shabbat_trigger
     from: "off"
     to: "on"
     id: shabbat_start
@@ -237,7 +247,7 @@ triggers:
     enabled: false
   - trigger: state
     entity_id:
-      - input_boolean.shabbat_active
+      - !input shabbat_trigger
     from: "on"
     to: "off"
     id: shabbat_end
