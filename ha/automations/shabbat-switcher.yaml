@@ -82,6 +82,7 @@ blueprint:
       name: Early Start Time (Optional)
       description: >
         This is the latest time the house will go into Shabbat mode even if not yet candle lighting
+        
         **Must be set if early Shabbat mode is enabled**
       default: "19:30:00"
       selector:
@@ -89,7 +90,8 @@ blueprint:
     erev_sensor:
       name: Sensor which identifies if it is erev shabbat (Optional)
       description: >
-        The sensor which activates this automation, generally from Jewish Calendar  
+        The sensor which activates this automation, generally from Jewish Calendar 
+        
         **Must be set if early Shabbat mode is enabled.**
       default: binary_sensor.jewish_calendar_erev_shabbat_hag
       selector:
