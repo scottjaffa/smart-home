@@ -42,7 +42,7 @@ blueprint:
                   - binary_sensor
               multiple: false
         shabbat_status:
-          name: Internal variable
+          name: Shabbat Status
           description: >
             The internal variable used to denote Shabbat mode for the house
           default: input_boolean.shabbat_active
