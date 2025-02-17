@@ -68,7 +68,7 @@ mode: single
 
 variables:
   shabbat_trigger: !input shabbat_trigger
-  disable_trigger: !input shabbat_disable
+  shabbat_disable: !input shabbat_disable
 
     
 triggers:
