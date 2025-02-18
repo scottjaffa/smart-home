@@ -437,7 +437,7 @@ lunch_time: !input lunch_time
 afternoon_time: !input afternoon_time
 dusk_offset: !input dusk_offset
 wakeup_time: !input wakeup_time
-bedtime_time: !input bedtime_time
+bedroom_time: !input bedroom_time
 
 
 
@@ -474,7 +474,7 @@ triggers:
     offset: !input dusk_offset
     id: shabbat_dusk
     trigger: sun
-  - at: !input bedtime_time
+  - at: !input bedroom_time
     id: shabbat_kid_bedtime
     trigger: time
     enabled: false
