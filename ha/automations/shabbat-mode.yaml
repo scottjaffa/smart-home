@@ -40,7 +40,6 @@ blueprint:
               filter:
                 domain:
                   - binary_sensor
-              multiple: false
 
     start_settings:
       name: "Start *"
