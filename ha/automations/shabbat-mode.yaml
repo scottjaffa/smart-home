@@ -25,19 +25,23 @@ blueprint:
     Required = *
   domain: automation
   input:
-    shabbat_trigger:
-      name: Trigger Sensor
-      description: >
-        The sensor which triggers this automation, generally from Jewish Calendar
+    trigger:
+      name: "Config *"
+      icon: mdi:cog-outline
+      collapsed: true
+      input:
+        shabbat_trigger:
+          name: Trigger Sensor
+          description: >
+            The sensor which triggers this automation, generally from Jewish Calendar
+          default: input_boolean.shabbat_active
+          selector:
+            entity:
+              filter:
+                domain:
+                  - binary_sensor
+              multiple: false
 
-      default: input_boolean.shabbat_active
-      selector:
-        entity:
-          filter:
-            domain:
-              - binary_sensor
-            multiple: false
-              
     start_settings:
       name: "Start *"
       icon: mdi:lightbulb-on-outline
