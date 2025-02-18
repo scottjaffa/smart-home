@@ -428,17 +428,33 @@ blueprint:
 
 
 shabbat_trigger: !input shabbat_trigger
-dinner_time: !input dinner_time
-evening_time: !input evening_time
-night_time: !input night_time
-wakeup_time: !input wakeup_time
-morning_time: !input morning_time
-lunch_time: !input lunch_time
-afternoon_time: !input afternoon_time
-dusk_offset: !input dusk_offset
-wakeup_time: !input wakeup_time
-bedroom_time: !input bedroom_time
 
+dinner_time: !input dinner_time
+enable_dinner_schedule: !input enable_dinner_schedule
+
+evening_time: !input evening_time
+enable_evening_schedule: !input enable_evening_schedule
+
+night_time: !input night_time
+enable_night_schedule: !input enable_night_schedule
+
+wakeup_time: !input wakeup_time
+enable_wakeup_schedule: !input enable_wakeup_schedule
+
+morning_time: !input morning_time
+enable_morning_schedule: !input enable_morning_schedule
+
+lunch_time: !input lunch_time
+enable_lunch_schedule: !input enable_lunch_schedule
+
+afternoon_time: !input afternoon_time
+enable_afternoon_schedule: !input enable_afternoon_schedule
+
+dusk_offset: !input dusk_offset
+enable_dusk_schedule: !input enable_dusk_schedule
+
+bedroom_time: !input bedroom_time
+enable_bedroom_schedule: !input enable_bedroom_schedule
 
 
 
@@ -484,3 +500,95 @@ triggers:
     from: "on"
     to: "off"
     id: shabbat_end
+
+
+conditions:
+  - condition: or
+    conditions:
+      - alias: Shabbat Active Path
+        condition: and
+        conditions:
+          - condition: state
+            entity_id: !input shabbat_trigger
+            state: "on"
+          - condition: or
+            conditions:
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_dinner
+                  - "{{ enable_dinner_schedule == 'dinner_schedule_enabled' }}"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_evening
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_night
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_wakeup
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_morning
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_lunch
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_afternoon
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_dusk
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_kid_bedtime
+                  - condition: state
+                    entity_id: input_boolean.placeholder_helper
+                    state: "on"
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.shabbat_active
+            state: "off"
+          - condition: trigger
+            id:
+              - shabbat_end
+        alias: Shabbat Inactive Path
