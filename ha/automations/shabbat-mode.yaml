@@ -67,7 +67,44 @@ blueprint:
       name: "End *"
       icon: mdi:lightbulb-on-outline
       collapsed: true
-                         
+
+    dinner_settings:
+      name: "dinner"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+      input:
+        enable_dinner_schedule:
+          name: Enable dinner schedule
+          description: >
+            This setting enables the dinner schedule.
+          default: dinner_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable dinner schedule
+                  value: "dinner_schedule_enabled"
+                - label: Disable dinner schedule
+                  value: "dinner_schedule_disabled"                     
+        dinner_time:
+          name: dinner set time
+          description: >
+
+          default: "7:30:00"
+          selector:
+            time:       
+        dinner_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+                           
     evening_settings:
       name: "Evening"
       icon: mdi:lightbulb-on-outline
@@ -142,31 +179,31 @@ blueprint:
                   - scene
                   - script
 
-    bedtime_settings:
-      name: "Bedtime"
+    wakeup_settings:
+      name: "wakeup"
       icon: mdi:lightbulb-on-outline
       collapsed: true
       input:
-        enable_bedtime_schedule:
-          name: Enable bedtime schedule
+        enable_wakeup_schedule:
+          name: Enable wakeup schedule
           description: >
-            This setting enables the bedtime schedule.
-          default: bedtime_schedule_disabled
+            This setting enables the wakeup schedule.
+          default: wakeup_schedule_disabled
           selector:
             select:
               options:
-                - label: Enable bedtime schedule
-                  value: "bedtime_schedule_enabled"
-                - label: Disable bedtime schedule
-                  value: "bedtime_schedule_disabled"                     
-        bedtime_time:
-          name: bedtime set time
+                - label: Enable wakeup schedule
+                  value: "wakeup_schedule_enabled"
+                - label: Disable wakeup schedule
+                  value: "wakeup_schedule_disabled"                     
+        wakeup_time:
+          name: wakeup set time
           description: >
 
-          default: "22:00:00"
+          default: "6:30:00"
           selector:
             time:       
-        bedtime_scenes:
+        wakeup_scenes:
           name: Night Scenes, Scripts, Automations
           description: >
             
@@ -215,7 +252,44 @@ blueprint:
                   - automation
                   - scene
                   - script
-      
+
+    lunch_settings:
+      name: "lunch"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+      input:
+        enable_lunch_schedule:
+          name: Enable lunch schedule
+          description: >
+            This setting enables the lunch schedule.
+          default: lunch_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable lunch schedule
+                  value: "lunch_schedule_enabled"
+                - label: Disable lunch schedule
+                  value: "lunch_schedule_disabled"                     
+        lunch_time:
+          name: lunch set time
+          description: >
+
+          default: "12:30:00"
+          selector:
+            time:       
+        lunch_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+
     afternoon_settings:
       name: "afternoon"
       icon: mdi:lightbulb-on-outline
@@ -253,6 +327,42 @@ blueprint:
                   - scene
                   - script
 
+    dusk_settings:
+      name: "dusk"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+      input:
+        enable_dusk_schedule:
+          name: Enable dusk schedule
+          description: >
+            This setting enables the dusk schedule.
+          default: dusk_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable dusk schedule
+                  value: "dusk_schedule_enabled"
+                - label: Disable dusk schedule
+                  value: "dusk_schedule_disabled"                     
+        dusk_offset:
+          name: dusk offset time
+          description: >
+
+          default: "-00:45:00"
+          selector:
+            time:       
+        dusk_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
     bedroom_settings:
       name: "Bedroom"
       icon: mdi:lightbulb-on-outline
@@ -292,9 +402,8 @@ wakeup_time: !input wakeup_time
 morning_time: !input morning_time
 lunch_time: !input lunch_time
 afternoon_time: !input afternoon_time
-dusk_use: !input dusk_use
 dusk_offset: !input dusk_offset
-bedtime_time: !input bedtime_time
+wakeup_time: !input wakeup_time
 
 
 
