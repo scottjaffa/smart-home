@@ -67,8 +67,7 @@ blueprint:
       name: "End *"
       icon: mdi:lightbulb-on-outline
       collapsed: true
-
-                            
+                         
     evening_settings:
       name: "Evening"
       icon: mdi:lightbulb-on-outline
@@ -85,16 +84,14 @@ blueprint:
                 - label: Enable evening schedule
                   value: "evening_schedule_enabled"
                 - label: Disable evening schedule
-                  value: "evening_schedule_disabled"      
-                  
+                  value: "evening_schedule_disabled"                     
         evening_time:
           name: Evening set time
           description: >
 
           default: "22:00:00"
           selector:
-            time:
-            
+            time:       
         evening_scenes:
           name: Night Scenes, Scripts, Automations
           description: >
@@ -124,17 +121,14 @@ blueprint:
                 - label: Enable night schedule
                   value: "night_schedule_enabled"
                 - label: Disable night schedule
-                  value: "night_schedule_disabled"      
-                                   
-                   
+                  value: "night_schedule_disabled"              
         night_time:
           name: Night set time
           description: >
 
           default: "00:10:00"
           selector:
-            time:
-            
+            time:     
         night_scenes:
           name: Night Scenes, Scripts, Automations
           description: >
@@ -152,16 +146,112 @@ blueprint:
       name: "Bedtime"
       icon: mdi:lightbulb-on-outline
       collapsed: true
-              
+      input:
+        enable_bedtime_schedule:
+          name: Enable bedtime schedule
+          description: >
+            This setting enables the bedtime schedule.
+          default: bedtime_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable bedtime schedule
+                  value: "bedtime_schedule_enabled"
+                - label: Disable bedtime schedule
+                  value: "bedtime_schedule_disabled"                     
+        bedtime_time:
+          name: bedtime set time
+          description: >
+
+          default: "22:00:00"
+          selector:
+            time:       
+        bedtime_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+          
     morning_settings:
-      name: "Morning"
+      name: "morning"
       icon: mdi:lightbulb-on-outline
       collapsed: true
-              
+      input:
+        enable_morning_schedule:
+          name: Enable morning schedule
+          description: >
+            This setting enables the morning schedule.
+          default: morning_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable morning schedule
+                  value: "morning_schedule_enabled"
+                - label: Disable morning schedule
+                  value: "morning_schedule_disabled"                     
+        morning_time:
+          name: morning set time
+          description: >
+
+          default: "22:00:00"
+          selector:
+            time:       
+        morning_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+      
     afternoon_settings:
-      name: "Afternoon"
+      name: "afternoon"
       icon: mdi:lightbulb-on-outline
       collapsed: true
+      input:
+        enable_afternoon_schedule:
+          name: Enable afternoon schedule
+          description: >
+            This setting enables the afternoon schedule.
+          default: afternoon_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable afternoon schedule
+                  value: "afternoon_schedule_enabled"
+                - label: Disable afternoon schedule
+                  value: "afternoon_schedule_disabled"                     
+        afternoon_time:
+          name: afternoon set time
+          description: >
+
+          default: "22:00:00"
+          selector:
+            time:       
+        afternoon_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
 
     bedroom_settings:
       name: "Bedroom"
