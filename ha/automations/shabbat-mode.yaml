@@ -32,11 +32,11 @@ blueprint:
 
         default: input_boolean.shabbat_active
         selector:
-          entity:
-            filter:
+          target:
+            entity:
               domain:
                 - binary_sensor
-            multiple: false
+              multiple: false
               
     start_settings:
       name: "Start *"
