@@ -363,10 +363,43 @@ blueprint:
                   - automation
                   - scene
                   - script
+
     bedroom_settings:
-      name: "Bedroom"
+      name: "bedroom"
       icon: mdi:lightbulb-on-outline
       collapsed: true
+      input:
+        enable_bedroom_schedule:
+          name: Enable bedroom schedule
+          description: >
+            This setting enables the bedroom schedule.
+          default: bedroom_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable bedroom schedule
+                  value: "bedroom_schedule_enabled"
+                - label: Disable bedroom schedule
+                  value: "bedroom_schedule_disabled"                     
+        bedroom_time:
+          name: bedroom set time
+          description: >
+
+          default: "22:00:00"
+          selector:
+            time:       
+        bedroom_scenes:
+          name: Night Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
              
     Bathroom_settings:
       name: "Bathroom"
@@ -404,6 +437,7 @@ lunch_time: !input lunch_time
 afternoon_time: !input afternoon_time
 dusk_offset: !input dusk_offset
 wakeup_time: !input wakeup_time
+bedtime_time: !input bedtime_time
 
 
 
@@ -437,7 +471,7 @@ triggers:
     id: shabbat_afternoon
     trigger: time
   - event: sunset
-    offset: "-00:45:00"
+    offset: !input dusk_offset
     id: shabbat_dusk
     trigger: sun
   - at: !input bedtime_time
