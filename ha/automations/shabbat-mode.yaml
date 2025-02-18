@@ -429,33 +429,45 @@ blueprint:
 
 shabbat_trigger: !input shabbat_trigger
 
+start_scenes: !input start_scenes
+
 dinner_time: !input dinner_time
 enable_dinner_schedule: !input enable_dinner_schedule
+dinner_scenes: !input dinner_scenes
 
 evening_time: !input evening_time
 enable_evening_schedule: !input enable_evening_schedule
+evening_scenes: !input evening_scenes
 
 night_time: !input night_time
 enable_night_schedule: !input enable_night_schedule
+evening_scenes: !input evening_scenes
 
 wakeup_time: !input wakeup_time
 enable_wakeup_schedule: !input enable_wakeup_schedule
+wakeup_scenes: !input wakeup_scenes
 
 morning_time: !input morning_time
 enable_morning_schedule: !input enable_morning_schedule
+morning_scenes: !input morning_scenes
 
 lunch_time: !input lunch_time
 enable_lunch_schedule: !input enable_lunch_schedule
+lunch_scenes: !input lunch_scenes
 
 afternoon_time: !input afternoon_time
 enable_afternoon_schedule: !input enable_afternoon_schedule
+afternoon_scenes: !input afternoon_scenes
 
 dusk_offset: !input dusk_offset
 enable_dusk_schedule: !input enable_dusk_schedule
+dusk_scenes: !input dusk_scenes
 
 bedroom_time: !input bedroom_time
 enable_bedroom_schedule: !input enable_bedroom_schedule
+bedroom_scenes: !input bedroom_scenes
 
+end_scenes: !input end_scenes
 
 
 triggers:
