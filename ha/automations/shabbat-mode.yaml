@@ -67,6 +67,21 @@ blueprint:
       name: "End *"
       icon: mdi:lightbulb-on-outline
       collapsed: true
+      input:
+        end_scenes:
+          name: End Scenes, Scripts, Automations
+          description: >
+            
+
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+
 
     dinner_settings:
       name: "dinner"
