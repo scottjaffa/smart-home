@@ -1,0 +1,73 @@
+blueprint:
+  name: Shabbat Mode
+  description: >
+    # 🕎 Shabbat Mode
+
+    **Version: .1**
+
+
+    Shabbat Mode master automation
+
+    Requires the Jewish Calendar integration
+
+    <details>
+    <summary>How it works:</summary>
+
+
+      - **Trigger:**
+        - Going to be lots of description here
+    </details>
+
+
+    Welcome to reach out for questions.
+
+
+    Required = *
+  domain: automation
+  input:
+    trigger:
+      name: "Config *"
+      icon: mdi:cog-outline
+      collapsed: true
+      input:
+        shabbat_trigger:
+          name: Trigger Sensor
+          description: >
+            The sensor which triggers this automation, generally from Jewish Calendar
+          default: input_boolean.shabbat_active
+          selector:
+            entity:
+              filter:
+                domain:
+                  - binary_sensor
+        enable_start_schedule:
+          name: Enable start schedule
+          description: >
+            This setting enables the start schedule.
+          default: start_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable start schedule
+                  value: "start_schedule_enabled"
+                - label: Disable start schedule
+                  value: "start_schedule_disabled" 
+
+    start_settings:
+      name: "Start *"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+      input:
+        start_scenes:
+          name: Start Scenes, Scripts, Automations
+          description: >
+            
+
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
