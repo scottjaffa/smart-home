@@ -89,7 +89,7 @@ triggers:
   - trigger: time
     at: "18:00:00"
     id: start
-conditions:
+condition:
   - condition: or
     conditions:
       - condition: and
