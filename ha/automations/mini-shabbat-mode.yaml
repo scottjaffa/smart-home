@@ -81,6 +81,9 @@ enable_start_schedule: !input enable_start_schedule
 
 
 
+scene_entities: "{{ start_scenes | select('match', '^scene\\..*') | list }}"
+
+
 
 triggers:
   - trigger: time
@@ -114,7 +117,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: !input start_scenes
+              entity_id: "{{ scene_entities }}"
 mode: single
 
 
