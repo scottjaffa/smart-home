@@ -39,7 +39,7 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - binary_sensor
+                  - input_boolean
 
     start_settings:
       name: "Start *"
