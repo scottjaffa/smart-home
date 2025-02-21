@@ -97,7 +97,7 @@ condition:
           - condition: state
             entity_id: !input shabbat_trigger
             state: "on"
-            match: any
+            match: all
           - condition: or
             conditions:
               - condition: and
