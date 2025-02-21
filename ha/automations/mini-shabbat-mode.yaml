@@ -39,7 +39,7 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - binary_sensor
+                  - input_boolean
         enable_start_schedule:
           name: Enable start schedule
           description: >
