@@ -71,3 +71,52 @@ blueprint:
                   - automation
                   - scene
                   - script
+
+
+shabbat_trigger: !input shabbat_trigger
+
+start_scenes: !input start_scenes
+
+enable_start_schedule: !input enable_start_schedule
+
+
+
+
+triggers:
+  - trigger: time
+    at: "18:00:00"
+    id: start
+conditions:
+  - condition: or
+    conditions:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: !input shabbat_trigger
+            state: "on"
+          - condition: or
+            conditions:
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - start
+                      - "{{ !input enable_start_schedule == 'start_schedule_enabled' }}"
+
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - start
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input start_scenes
+mode: single
+
+
+
+
