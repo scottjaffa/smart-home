@@ -48,10 +48,17 @@ triggers:
   - trigger: time
     at: "18:00:00"
     id: start
-condition: state
-  entity_id: !input shabbat_trigger
-  state: "on"
-       
+    
+condition: 
+  - condition: or
+    conditions:
+      - condition: and
+        conditions:
+          - condition: trigger
+            id: start
+          - condition: state
+            entity_id: !input shabbat_trigger
+            state: "on"
 
 mode: single
 
