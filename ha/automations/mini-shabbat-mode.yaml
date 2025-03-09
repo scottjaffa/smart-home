@@ -55,7 +55,7 @@ condition:
             id: start
           - condition: state
             entity_id: !input shabbat_trigger
-            state: "on"
+            state: 'on'
 
 mode: single
 
