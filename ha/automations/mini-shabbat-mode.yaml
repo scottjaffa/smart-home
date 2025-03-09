@@ -37,8 +37,8 @@ blueprint:
             domain:
               - input_boolean
 
-        
-shabbat_trigger: !input shabbat_trigger
+variables:         
+  shabbat_trigger: !input shabbat_trigger
 
 
 triggers:
