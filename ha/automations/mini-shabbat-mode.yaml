@@ -23,42 +23,99 @@ blueprint:
 
 
     Required = *
-
   domain: automation
   input:
-    shabbat_trigger:
-      name: Sensor
-      description: >
-        The sensor which activates this automation, generally from Jewish Calendar
-      default: input_boolean.shabbat_active
-      selector:
-        entity:
-          filter:
-            domain:
-              - input_boolean
+    trigger:
+      name: "Config *"
+      icon: mdi:cog-outline
+      collapsed: true
+      input:
+        shabbat_trigger:
+          name: Trigger Sensor
+          description: >
+            The sensor which triggers this automation, generally from Jewish Calendar
+          default: input_boolean.shabbat_active
+          selector:
+            entity:
+              filter:
+                domain:
+                  - input_boolean
+        enable_start_schedule:
+          name: Enable start schedule
+          description: >
+            This setting enables the start schedule.
+          default: start_schedule_disabled
+          selector:
+            select:
+              options:
+                - label: Enable start schedule
+                  value: "start_schedule_enabled"
+                - label: Disable start schedule
+                  value: "start_schedule_disabled" 
 
-variables:         
+    start_settings:
+      name: "Start *"
+      icon: mdi:lightbulb-on-outline
+      collapsed: true
+      input:
+        start_scenes:
+          name: Start Scenes, Scripts, Automations
+          description: >
+            
+
+          default: []
+          selector:
+            target:
+              entity:
+                domain:
+                  - automation
+                  - scene
+                  - script
+
+variables:
   shabbat_trigger: !input shabbat_trigger
+
+  start_scenes: !input start_scenes
+
+  enable_start_schedule: !input enable_start_schedule
+
+
+
+  scene_entities: "{{ start_scenes | select('match', '^scene\\..*') | list }}"
+
 
 
 triggers:
   - trigger: time
     at: "18:00:00"
     id: start
-    
-condition: 
+condition:
   - condition: or
     conditions:
       - condition: and
         conditions:
-          - condition: trigger
-            id: start
           - condition: state
             entity_id: !input shabbat_trigger
-            state: 'on'
+            state: "on"
+          - condition: or
+            conditions:
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - start
+                      - "{{ !input enable_start_schedule == 'start_schedule_enabled' }}"
 
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - start
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ scene_entities }}"
 mode: single
-
-
-
-
