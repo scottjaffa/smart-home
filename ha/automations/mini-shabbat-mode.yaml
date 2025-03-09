@@ -37,9 +37,9 @@ blueprint:
           default: input_boolean.shabbat_active
           selector:
             entity:
-              filter:
-                domain:
-                  - input_boolean
+#              filter:
+#                domain:
+#                  - input_boolean
         
 shabbat_trigger: !input shabbat_trigger
 
