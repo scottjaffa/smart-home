@@ -549,7 +549,7 @@ conditions:
                     id:
                       - shabbat_evening
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_evening_schedule
                     state: "on"
               - condition: and
                 conditions:
@@ -557,7 +557,7 @@ conditions:
                     id:
                       - shabbat_night
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_night_schedule
                     state: "on"
               - condition: and
                 conditions:
@@ -565,7 +565,7 @@ conditions:
                     id:
                       - shabbat_wakeup
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_wakeup_schedule
                     state: "on"
               - condition: and
                 conditions:
@@ -573,7 +573,7 @@ conditions:
                     id:
                       - shabbat_morning
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_morning_schedule
                     state: "on"
               - condition: and
                 conditions:
@@ -581,7 +581,7 @@ conditions:
                     id:
                       - shabbat_lunch
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_lunch_schedule
                     state: "on"
               - condition: and
                 conditions:
@@ -589,7 +589,7 @@ conditions:
                     id:
                       - shabbat_afternoon
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_afternoon_schedule
                     state: "on"
               - condition: and
                 conditions:
@@ -597,7 +597,7 @@ conditions:
                     id:
                       - shabbat_dusk
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_dusk_schedule
                     state: "on"
               - condition: and
                 conditions:
@@ -605,14 +605,218 @@ conditions:
                     id:
                       - shabbat_kid_bedtime
                   - condition: state
-                    entity_id: input_boolean.placeholder_helper
+                    entity_id: !input enable_bedroom_schedule
                     state: "on"
       - condition: and
         conditions:
           - condition: state
-            entity_id: input_boolean.shabbat_active
+            entity_id: !input shabbat_trigger
             state: "off"
           - condition: trigger
             id:
               - shabbat_end
         alias: Shabbat Inactive Path
+
+actions:
+  - choose:
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_start
+            alias: Trigger - Start
+        sequence:
+          - action: automation.trigger
+            metadata: {}
+            data:
+              skip_condition: true
+            target:
+              entity_id: automation.shabbat_motion_disable
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.0_shabbat_start
+          - if:
+              - condition: state
+                entity_id: input_boolean.shabbat_lunch_guests
+                state: "on"
+            then:
+              - action: input_datetime.set_datetime
+                metadata: {}
+                data:
+                  time: >-
+                    {{ (states('input_datetime.lunch_end_time_dev') | today_at +
+                    timedelta(minutes=states('input_number.lunch_guest_modifier')
+                    | int(0))).time() }}
+                  entity_id: input_datetime.lunch_end_time_dev
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_dinner
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.0_shabbat_start
+        alias: Trigger - Dinner
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_evening
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.shabbat_1_evening
+        alias: Trigger - Evening
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_night
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.shabbat_2_goodnight
+        alias: Trigger - Night
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_wakeup
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.shabbat_4_morning
+        alias: Trigger - Wakeup
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_morning
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.shabbat_4_morning
+        alias: Trigger - Morning
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_lunch
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.shabbat_lunch
+        alias: Trigger - Lunch
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_lunch_warm
+        sequence:
+          - type: turn_on
+            device_id: 79276416b5df417ba3ce9957ae7c7f87
+            entity_id: b480c7338cf051bb64184125ea8bfd6c
+            domain: switch
+          - type: turn_on
+            device_id: 4f07ad718997a375da5d1271bba013ce
+            entity_id: 4fa06dd233f6d1f54e896f41f40657b9
+            domain: switch
+        alias: Trigger - Lunch Warmer
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_afternoon
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.shabbat_5_afternoon
+        alias: Trigger - Afternoon
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_dusk
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.0_shabbat_start
+        alias: Trigger - Dusk
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_end
+        sequence:
+          - action: automation.trigger
+            metadata: {}
+            data:
+              skip_condition: true
+            target:
+              entity_id: automation.shabbat_motion_end
+        alias: Trigger - End
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_kid_bedtime
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.yellow_room_nightlight
+        alias: Trigger - Kid Bedtime
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_lunch_end
+        sequence:
+          - type: turn_off
+            device_id: 79276416b5df417ba3ce9957ae7c7f87
+            entity_id: b480c7338cf051bb64184125ea8bfd6c
+            domain: switch
+          - type: turn_off
+            device_id: 4f07ad718997a375da5d1271bba013ce
+            entity_id: 4fa06dd233f6d1f54e896f41f40657b9
+            domain: switch
+          - type: turn_off
+            device_id: a668a5c93675d400657df8a31af54d1c
+            entity_id: 694cae63989a74c06d9830a3f0591144
+            domain: light
+        alias: Trigger - Lunch End
+
+mode: single
