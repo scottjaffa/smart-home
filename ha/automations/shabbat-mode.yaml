@@ -453,7 +453,7 @@ variables:
   
   night_time: !input night_time
   enable_night_schedule: !input enable_night_schedule
-  evening_scenes: !input evening_scenes
+  night_scenes: !input night_scenes
   
   wakeup_time: !input wakeup_time
   enable_wakeup_schedule: !input enable_wakeup_schedule
@@ -637,7 +637,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.0_shabbat_start
+              entity_id: !input start_scenese
           - if:
               - condition: state
                 entity_id: input_boolean.shabbat_lunch_guests
@@ -662,7 +662,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.0_shabbat_start
+              entity_id: !input dinner_scenes
         alias: Trigger - Dinner
       - conditions:
           - condition: and
@@ -675,7 +675,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.shabbat_1_evening
+              entity_id: !input evening_scenes
         alias: Trigger - Evening
       - conditions:
           - condition: and
@@ -688,7 +688,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.shabbat_2_goodnight
+              entity_id: !input night_scenes
         alias: Trigger - Night
       - conditions:
           - condition: and
@@ -701,7 +701,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.shabbat_4_morning
+              entity_id: !input wakeup_scenes
         alias: Trigger - Wakeup
       - conditions:
           - condition: and
@@ -714,7 +714,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.shabbat_4_morning
+              entity_id: !input morning_scenes
         alias: Trigger - Morning
       - conditions:
           - condition: and
@@ -727,7 +727,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.shabbat_lunch
+              entity_id: !input lunch_scenes
         alias: Trigger - Lunch
       - conditions:
           - condition: and
@@ -756,7 +756,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.shabbat_5_afternoon
+              entity_id: !input afternoon_scenes
         alias: Trigger - Afternoon
       - conditions:
           - condition: and
@@ -769,7 +769,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.0_shabbat_start
+              entity_id: !input dusk_scenes
         alias: Trigger - Dusk
       - conditions:
           - condition: and
@@ -796,7 +796,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: scene.yellow_room_nightlight
+              entity_id: !input bedroom_scenes
         alias: Trigger - Kid Bedtime
       - conditions:
           - condition: and
