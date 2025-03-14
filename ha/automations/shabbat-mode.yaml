@@ -44,7 +44,6 @@ blueprint:
     start_settings:
       name: "Start *"
       icon: mdi:lightbulb-on-outline
-      collapsed: true
       input:
         start_scenes:
           name: Start Scenes, Scripts, Automations
