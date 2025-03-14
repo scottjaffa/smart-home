@@ -819,4 +819,4 @@ actions:
             domain: light
         alias: Trigger - Lunch End
 
-mode: single
+mode: queued
