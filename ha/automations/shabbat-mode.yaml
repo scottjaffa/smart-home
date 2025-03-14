@@ -41,8 +41,10 @@ blueprint:
                 domain:
                   - input_boolean
 
-    start_settings:
-      name: "Start *"
+
+
+    schedule:
+      name: "Schedule *"
       icon: mdi:lightbulb-on-outline
       input:
         start_scenes:
@@ -59,11 +61,6 @@ blueprint:
                   - scene
                   - script
 
-    end_settings:
-      name: "End *"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         end_scenes:
           name: End Scenes, Scripts, Automations
           description: >
@@ -78,12 +75,6 @@ blueprint:
                   - scene
                   - script
 
-
-    dinner_settings:
-      name: "dinner"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_dinner_schedule:
           name: Enable dinner schedule
           description: >
@@ -116,11 +107,6 @@ blueprint:
                   - scene
                   - script
                            
-    evening_settings:
-      name: "Evening"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_evening_schedule:
           name: Enable evening schedule
           description: >
@@ -153,11 +139,6 @@ blueprint:
                   - scene
                   - script
 
-    night_settings:
-      name: "Night"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_night_schedule:
           name: Enable night schedule
           description: >
@@ -190,11 +171,6 @@ blueprint:
                   - scene
                   - script
 
-    wakeup_settings:
-      name: "wakeup"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_wakeup_schedule:
           name: Enable wakeup schedule
           description: >
@@ -227,11 +203,6 @@ blueprint:
                   - scene
                   - script
           
-    morning_settings:
-      name: "morning"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_morning_schedule:
           name: Enable morning schedule
           description: >
@@ -264,11 +235,6 @@ blueprint:
                   - scene
                   - script
 
-    lunch_settings:
-      name: "lunch"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_lunch_schedule:
           name: Enable lunch schedule
           description: >
@@ -301,11 +267,6 @@ blueprint:
                   - scene
                   - script
 
-    afternoon_settings:
-      name: "afternoon"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_afternoon_schedule:
           name: Enable afternoon schedule
           description: >
@@ -338,11 +299,6 @@ blueprint:
                   - scene
                   - script
 
-    dusk_settings:
-      name: "dusk"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_dusk_schedule:
           name: Enable dusk schedule
           description: >
@@ -375,11 +331,6 @@ blueprint:
                   - scene
                   - script
 
-    bedroom_settings:
-      name: "bedroom"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
-      input:
         enable_bedroom_schedule:
           name: Enable bedroom schedule
           description: >
