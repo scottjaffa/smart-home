@@ -94,7 +94,7 @@ blueprint:
           selector:
             time:       
         dinner_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Dinner Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -126,7 +126,7 @@ blueprint:
           selector:
             time:       
         evening_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Evening Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -190,7 +190,7 @@ blueprint:
           selector:
             time:       
         wakeup_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Wakeup Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -218,11 +218,11 @@ blueprint:
           name: morning set time
           description: >
 
-          default: "22:00:00"
+          default: "9:00:00"
           selector:
             time:       
         morning_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Morning Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -254,7 +254,7 @@ blueprint:
           selector:
             time:       
         lunch_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Lunch Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -282,11 +282,11 @@ blueprint:
           name: afternoon set time
           description: >
 
-          default: "22:00:00"
+          default: "2:30:00"
           selector:
             time:       
         afternoon_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Afternoon Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -318,7 +318,7 @@ blueprint:
           selector:
             time:       
         dusk_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Dusk Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -346,11 +346,11 @@ blueprint:
           name: bedroom set time
           description: >
 
-          default: "22:00:00"
+          default: "7:00:00"
           selector:
             time:       
         bedroom_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Bedroom Scenes, Scripts, Automations
           description: >
             
           default: []
