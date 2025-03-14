@@ -22,13 +22,11 @@ blueprint:
     Welcome to reach out for questions.
 
 
-    Required = *
   domain: automation
   input:
     trigger:
-      name: "Config *"
+      name: "Shabbat Trigger *"
       icon: mdi:cog-outline
-      collapsed: true
       input:
         shabbat_trigger:
           name: Trigger Sensor
@@ -44,13 +42,13 @@ blueprint:
 
 
     schedule:
-      name: "Schedule *"
+      name: "Schedule"
       icon: mdi:lightbulb-on-outline
       input:
         start_scenes:
           name: Start Scenes, Scripts, Automations
           description: >
-            
+            Scenes, scripts, automations for start of shabbat
 
           default: []
           selector:
@@ -64,7 +62,8 @@ blueprint:
         end_scenes:
           name: End Scenes, Scripts, Automations
           description: >
-            
+            Scenes, scripts, automations for end of shabbat
+
 
           default: []
           selector:
