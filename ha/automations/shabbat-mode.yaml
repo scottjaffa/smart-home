@@ -637,7 +637,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: !input start_scenese
+              entity_id: !input start_scenes
           - if:
               - condition: state
                 entity_id: input_boolean.shabbat_lunch_guests
