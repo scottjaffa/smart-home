@@ -501,15 +501,13 @@ conditions:
                   - condition: trigger
                     id:
                       - shabbat_evening
-                  - condition: state
-                    entity_id: !input enable_evening_schedule
-                    state: "on"
+                  - "{{ evening_evening_schedule == 'evening_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_night
-                  - "{{ enable_evening_schedule == 'evening_schedule_enabled' }}"
+                  - "{{ night_evening_schedule == 'night_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
