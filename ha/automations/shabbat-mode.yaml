@@ -31,7 +31,9 @@ blueprint:
         shabbat_trigger:
           name: Trigger Sensor
           description: >
-            The sensor which triggers this automation, generally from Jewish Calendar
+            The sensor which indicates we are in Shabbat Mode
+            See companion blueprint for advanced settings for enabling Shabbat Mode
+            https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-switcher.yaml
           default: input_boolean.shabbat_active
           selector:
             entity:
