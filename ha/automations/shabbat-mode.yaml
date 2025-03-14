@@ -509,57 +509,43 @@ conditions:
                   - condition: trigger
                     id:
                       - shabbat_night
-                  - condition: state
-                    entity_id: !input enable_night_schedule
-                    state: "on"
+                  - "{{ enable_evening_schedule == 'evening_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_wakeup
-                  - condition: state
-                    entity_id: !input enable_wakeup_schedule
-                    state: "on"
+                  - "{{ enable_wakeup_schedule == 'wakeup_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_morning
-                  - condition: state
-                    entity_id: !input enable_morning_schedule
-                    state: "on"
+                  - "{{ enable_morning_schedule == 'morning_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_lunch
-                  - condition: state
-                    entity_id: !input enable_lunch_schedule
-                    state: "on"
+                  - "{{ enable_lunch_schedule == 'lunch_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_afternoon
-                  - condition: state
-                    entity_id: !input enable_afternoon_schedule
-                    state: "on"
+                  - "{{ enable_afternoon_schedule == 'afternoon_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_dusk
-                  - condition: state
-                    entity_id: !input enable_dusk_schedule
-                    state: "on"
+                  - "{{ enable_dusk_schedule == 'dusk_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_kid_bedtime
-                  - condition: state
-                    entity_id: !input enable_bedroom_schedule
-                    state: "on"
+                  - "{{ enable_bedtime_schedule == 'bedtime_schedule_enabled' }}"
       - condition: and
         conditions:
           - condition: state
