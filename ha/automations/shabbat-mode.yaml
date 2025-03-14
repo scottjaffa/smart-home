@@ -434,6 +434,11 @@ variables:
   
   end_scenes: !input end_scenes
 
+  start_scene_entities: "{{ start_scenes | select('match', '^scene\\..*') | list }}"
+  start_script_entities: "{{ start_scenes | select('match', '^script\\..*') | list }}"
+
+  end_scene_entities: "{{ end_scenes | select('match', '^scene\\..*') | list }}"
+  end_script_entities: "{{ end_scenes | select('match', '^script\\..*') | list }}"
 
 triggers:
   - trigger: state
@@ -564,17 +569,17 @@ actions:
                   - shabbat_start
             alias: Trigger - Start
         sequence:
-          - action: automation.trigger
+          - action: script.trigger
             metadata: {}
             data:
               skip_condition: true
             target:
-              entity_id: automation.shabbat_motion_disable
+              entity_id: "{{ start_script_entitities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input start_scenes
+              entity_id: "{{ start_scene_entitities }}"
           - if:
               - condition: state
                 entity_id: input_boolean.shabbat_lunch_guests
@@ -715,12 +720,17 @@ actions:
                 id:
                   - shabbat_end
         sequence:
-          - action: automation.trigger
+          - action: script.trigger
             metadata: {}
             data:
               skip_condition: true
             target:
-              entity_id: automation.shabbat_motion_end
+              entity_id: "{{ end_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ end_scene_entitities }}"
         alias: Trigger - End
       - conditions:
           - condition: and
