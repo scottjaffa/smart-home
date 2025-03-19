@@ -439,7 +439,14 @@ blueprint:
           default: "11:00:00"
           selector:
             time:   
+        
+        third_meal_warming:
+          name: Third Meal Warming Device Activation
+          description: >
 
+          default: "17:00:00"
+          selector:
+            time:   
              
     device_settings:
       name: "Device Settings"
