@@ -406,10 +406,50 @@ blueprint:
                   - scene
                   - script
 
+     
+    food_heating_settings:
+      name: "Food Heating Settings"
+      icon: mdi:heat-wave
+      input:
+        warming_devices:
+          name: Warming Devices
+          description: >
+            Devices to turn on for meal warming
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - switch
+                  
+        dinner_warming:
+          name: Dinner Warming Device Activation
+          description: >
 
+          default: "19:30:00"
+          selector:
+            time:     
+            
+        lunch_warming:
+          name: Lunch Warming Device Activation
+          description: >
+
+          default: "11:00:00"
+          selector:
+            time:   
+
+             
+    device_settings:
+      name: "Device Settings"
+      icon: mdi:light-switch-off
+      collapsed: true
+      
     guests:
       name: "Guest Settings"
       icon: mdi:account-plus
+      collapsed: true
       input:
         enable_guest_settings:
           name: Enable guest settings
@@ -464,46 +504,8 @@ blueprint:
           selector:
             time:                   
                  
-     
-    food_heating_settings:
-      name: "Food Heating Settings"
-      icon: mdi:heat-wave
-      input:
-        warming_devices:
-          name: Warming Devices
-          description: >
-            Devices to turn on for meal warming
-            
-          default: []
-          selector:
-            entity:
-              multiple: true
-              filter:
-                domain:
-                  - switch
-                  
-        dinner_warming:
-          name: Dinner Warming Device Activation
-          description: >
 
-          default: "19:30:00"
-          selector:
-            time:     
-            
-        lunch_warming:
-          name: Lunch Warming Device Activation
-          description: >
 
-          default: "11:00:00"
-          selector:
-            time:   
-
-             
-             
-    device_settings:
-      name: "Device Settings"
-      icon: mdi:light-switch-off
-      collapsed: true
 
       
     Bathroom_settings:
