@@ -478,7 +478,6 @@ blueprint:
           selector:
             target:
               entity:
-                multiple: true
                 domain:
                   - device
                   
