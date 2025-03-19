@@ -27,6 +27,8 @@ blueprint:
     trigger:
       name: "Shabbat Trigger *"
       icon: mdi:cog-outline
+      description: >
+        Testing Description here
       input:
         shabbat_trigger:
           name: Trigger Sensor
