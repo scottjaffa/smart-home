@@ -486,7 +486,7 @@ blueprint:
           name: Dinner Warming Device Activation
           description: >
 
-          default: "07:30:00"
+          default: "19:30:00"
           selector:
             time:     
             
