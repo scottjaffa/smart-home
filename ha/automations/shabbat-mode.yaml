@@ -476,8 +476,9 @@ blueprint:
             
           default: []
           selector:
-            target:
-              entity:
+            entity:
+              multiple: true
+              filter:
                 domain:
                   - device
                   
