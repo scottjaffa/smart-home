@@ -45,8 +45,8 @@ blueprint:
 
 
 
-    schedule:
-      name: "Schedule"
+    start:
+      name: "Start"
       icon: mdi:lightbulb-on-outline
       input:
         start_scenes:
@@ -63,6 +63,10 @@ blueprint:
                   - scene
                   - script
 
+    end:
+      name: "End"
+      icon: mdi:lightbulb-on-outline
+      input:
         end_scenes:
           name: End Scenes, Scripts, Automations
           description: >
@@ -78,6 +82,10 @@ blueprint:
                   - scene
                   - script
 
+    dinner:
+      name: "Dinner Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:
         enable_dinner_schedule:
           name: Enable dinner schedule
           description: >
@@ -109,7 +117,11 @@ blueprint:
                   - automation
                   - scene
                   - script
-                           
+
+    evening:
+      name: "Evening Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:                          
         enable_evening_schedule:
           name: Enable evening schedule
           description: >
@@ -142,6 +154,10 @@ blueprint:
                   - scene
                   - script
 
+    night:
+      name: "Night Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:
         enable_night_schedule:
           name: Enable night schedule
           description: >
@@ -174,6 +190,10 @@ blueprint:
                   - scene
                   - script
 
+    wakeup:
+      name: "Wakeup Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:
         enable_wakeup_schedule:
           name: Enable wakeup schedule
           description: >
@@ -205,7 +225,11 @@ blueprint:
                   - automation
                   - scene
                   - script
-          
+
+    morning:
+      name: "Morning Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:          
         enable_morning_schedule:
           name: Enable morning schedule
           description: >
@@ -238,6 +262,10 @@ blueprint:
                   - scene
                   - script
 
+    lunch:
+      name: "Lunch Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:
         enable_lunch_schedule:
           name: Enable lunch schedule
           description: >
@@ -270,6 +298,10 @@ blueprint:
                   - scene
                   - script
 
+    afternoon:
+      name: "Afternoon Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:
         enable_afternoon_schedule:
           name: Enable afternoon schedule
           description: >
@@ -302,6 +334,10 @@ blueprint:
                   - scene
                   - script
 
+    dusk:
+      name: "Dusk Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:
         enable_dusk_schedule:
           name: Enable dusk schedule
           description: >
@@ -334,6 +370,10 @@ blueprint:
                   - scene
                   - script
 
+    bedroom:
+      name: "Bedroom Schedule"
+      icon: mdi:lightbulb-on-outline
+      input:
         enable_bedroom_schedule:
           name: Enable bedroom schedule
           description: >
