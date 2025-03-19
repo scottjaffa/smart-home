@@ -56,8 +56,8 @@ blueprint:
 
           default: []
           selector:
-            target:
-              entity:
+            entity:
+              filter:
                 domain:
                   - automation
                   - scene
