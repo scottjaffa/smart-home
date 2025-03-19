@@ -499,7 +499,11 @@ blueprint:
             time:   
 
              
-
+             
+    device_settings:
+      name: "Device Settings"
+      icon: mdi:light-switch-off
+      collapsed: true
 
       
     Bathroom_settings:
