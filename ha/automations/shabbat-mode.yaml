@@ -465,9 +465,10 @@ blueprint:
             time:                   
                  
      
-    Food_heating_settings:
+    food_heating_settings:
       name: "Food Heating Settings"
       icon: mdi:lightbulb-on-outline
+      input:
         warming_devices:
           name: Warming Devices
           description: >
