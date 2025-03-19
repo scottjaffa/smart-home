@@ -99,7 +99,7 @@ blueprint:
                 - label: Disable dinner schedule
                   value: "dinner_schedule_disabled"                     
         dinner_time:
-          name: dinner set time
+          name: Dinner Time
           description: >
 
           default: "7:30:00"
@@ -135,7 +135,7 @@ blueprint:
                 - label: Disable evening schedule
                   value: "evening_schedule_disabled"                     
         evening_time:
-          name: Evening set time
+          name: Evening Time
           description: >
 
           default: "22:00:00"
@@ -171,7 +171,7 @@ blueprint:
                 - label: Disable night schedule
                   value: "night_schedule_disabled"              
         night_time:
-          name: Night set time
+          name: Night Time
           description: >
 
           default: "00:10:00"
@@ -207,7 +207,7 @@ blueprint:
                 - label: Disable wakeup schedule
                   value: "wakeup_schedule_disabled"                     
         wakeup_time:
-          name: wakeup set time
+          name: Wakeup Time
           description: >
 
           default: "6:30:00"
@@ -243,7 +243,7 @@ blueprint:
                 - label: Disable morning schedule
                   value: "morning_schedule_disabled"                     
         morning_time:
-          name: morning set time
+          name: Morning Time
           description: >
 
           default: "9:00:00"
@@ -279,7 +279,7 @@ blueprint:
                 - label: Disable lunch schedule
                   value: "lunch_schedule_disabled"                     
         lunch_time:
-          name: lunch set time
+          name: Lunch Time
           description: >
 
           default: "12:30:00"
@@ -315,7 +315,7 @@ blueprint:
                 - label: Disable afternoon schedule
                   value: "afternoon_schedule_disabled"                     
         afternoon_time:
-          name: afternoon set time
+          name: Afternoon Time
           description: >
 
           default: "2:30:00"
@@ -351,7 +351,7 @@ blueprint:
                 - label: Disable dusk schedule
                   value: "dusk_schedule_disabled"                     
         dusk_offset:
-          name: dusk offset time
+          name: Dusk Offset Time
           description: >
 
           default: "-00:45:00"
@@ -387,7 +387,7 @@ blueprint:
                 - label: Disable bedroom schedule
                   value: "bedroom_schedule_disabled"                     
         bedroom_time:
-          name: bedroom set time
+          name: Bedroom Time
           description: >
 
           default: "7:00:00"
