@@ -354,9 +354,13 @@ blueprint:
           name: Dusk Offset Time
           description: >
 
-          default: "-00:45:00"
+          default: -45
           selector:
-            time:       
+            number:
+              min: -120
+              max: 0
+              step: 5
+              unit_of_measurement: minutes
         dusk_scenes:
           name: Dusk Scenes, Scripts, Automations
           description: >
@@ -507,9 +511,13 @@ blueprint:
           description: >
             How much time to extend the meal schedule when having gusets
 
-          default: "01:00:00"
+          default: 60
           selector:
-            time:                   
+            number:
+              min: 0
+              max: 120
+              step: 5
+              unit_of_measurement: minutes
                  
 
 
