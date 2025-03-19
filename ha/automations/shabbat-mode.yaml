@@ -297,7 +297,7 @@ blueprint:
                   - automation
                   - scene
                   - script
-
+                  
     afternoon:
       name: "Afternoon Schedule"
       icon: mdi:lightbulb-on-outline
@@ -405,15 +405,105 @@ blueprint:
                   - automation
                   - scene
                   - script
+
+
+    guests:
+      name: "Guest Settings"
+      icon: mdi:lightbulb-on-outline
+      input:
+        enable_guest_settings:
+          name: Enable guest settings
+          description: >
+            This setting enables schedule modifiers when having guests.
+          default: guest_settings_disabled
+          selector:
+            select:
+              options:
+                - label: Enable guest settings
+                  value: "guest_settings_enabled"
+                - label: Disable guest settings
+                  value: "guest_settings_disabled"    
+      
+        dinner_guest_sensor:
+          name: Dinner Guest Helper
+          description: >
+            A toggle boolean for when having dinner guests
+          default: input_boolean.dinner_guests
+          selector:
+            entity:
+              filter:
+                domain:
+                  - input_boolean
+        lunch_guest_sensor:
+          name: Lunch Guest Helper
+          description: >
+            A toggle boolean for when having lunch guests
+          default: input_boolean.lunch_guests
+          selector:
+            entity:
+              filter:
+                domain:
+                  - input_boolean
+        sleeping_guest_sensor:
+          name: Sleeping Guest Helper
+          description: >
+            A toggle boolean for when having sleeping guests
+          default: input_boolean.sleeping_guests
+          selector:
+            entity:
+              filter:
+                domain:
+                  - input_boolean
+
+        guest_meal_extension:
+          name: Guest Meal Extension
+          description: >
+            How much time to extend the meal schedule when having gusets
+
+          default: "01:00:00"
+          selector:
+            time:                   
+                 
+     
+    Food_heating_settings:
+      name: "Food Heating Settings"
+      icon: mdi:lightbulb-on-outline
+        warming_devices:
+          name: Warming Devices
+          description: >
+            Devices to turn on for meal warming
+            
+          default: []
+          selector:
+            target:
+              entity:
+              multiple: true
+                domain:
+                  - device
+                  
+        dinner_warming:
+          name: Dinner Warming Device Activation
+          description: >
+
+          default: "07:30:00"
+          selector:
+            time:     
+            
+        lunch_warming:
+          name: Lunch Warming Device Activation
+          description: >
+
+          default: "11:00:00"
+          selector:
+            time:   
+
              
+
+
+      
     Bathroom_settings:
       name: "Bathroom"
       icon: mdi:lightbulb-on-outline
-      collapsed: true
-      
-    food_settings:
-      name: "Food"
-      icon: mdi:food
       collapsed: true
 
     vacuum_settings:
