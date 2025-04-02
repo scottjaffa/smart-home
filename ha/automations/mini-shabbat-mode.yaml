@@ -101,7 +101,6 @@ condition:
                   - condition: trigger
                     id:
                       - start
-                      - {{ enabled_variable }}
 
 actions:
   - choose:
