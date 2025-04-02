@@ -95,9 +95,9 @@ blueprint:
             select:
               options:
                 - label: Enable dinner schedule
-                  value: "true"
+                  value: true
                 - label: Disable dinner schedule
-                  value: "false"                     
+                  value: false
         dinner_time:
           name: Dinner Time
           description: >
