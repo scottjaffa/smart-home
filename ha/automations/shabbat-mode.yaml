@@ -90,14 +90,8 @@ blueprint:
           name: Enable dinner schedule
           description: >
             This setting enables the dinner schedule.
-          default: "disabled"
           selector:
-            select:
-              options:
-                - label: Enable dinner schedule
-                  value: "enabled"
-                - label: Disable dinner schedule
-                  value: "disabled"
+            boolean:
         dinner_time:
           name: Dinner Time
           description: >
@@ -126,14 +120,8 @@ blueprint:
           name: Enable evening schedule
           description: >
             This setting enables the evening schedule.
-          default: evening_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable evening schedule
-                  value: "evening_schedule_enabled"
-                - label: Disable evening schedule
-                  value: "evening_schedule_disabled"                     
+            boolean:                   
         evening_time:
           name: Evening Time
           description: >
@@ -162,14 +150,8 @@ blueprint:
           name: Enable night schedule
           description: >
             This setting enables the night schedule.
-          default: night_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable night schedule
-                  value: "night_schedule_enabled"
-                - label: Disable night schedule
-                  value: "night_schedule_disabled"              
+            boolean:            
         night_time:
           name: Night Time
           description: >
@@ -198,14 +180,8 @@ blueprint:
           name: Enable wakeup schedule
           description: >
             This setting enables the wakeup schedule.
-          default: wakeup_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable wakeup schedule
-                  value: "wakeup_schedule_enabled"
-                - label: Disable wakeup schedule
-                  value: "wakeup_schedule_disabled"                     
+            boolean:                    
         wakeup_time:
           name: Wakeup Time
           description: >
@@ -234,14 +210,8 @@ blueprint:
           name: Enable morning schedule
           description: >
             This setting enables the morning schedule.
-          default: morning_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable morning schedule
-                  value: "morning_schedule_enabled"
-                - label: Disable morning schedule
-                  value: "morning_schedule_disabled"                     
+            boolean:                  
         morning_time:
           name: Morning Time
           description: >
@@ -270,14 +240,8 @@ blueprint:
           name: Enable lunch schedule
           description: >
             This setting enables the lunch schedule.
-          default: lunch_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable lunch schedule
-                  value: "lunch_schedule_enabled"
-                - label: Disable lunch schedule
-                  value: "lunch_schedule_disabled"                     
+            boolean:                    
         lunch_time:
           name: Lunch Time
           description: >
@@ -306,14 +270,8 @@ blueprint:
           name: Enable afternoon schedule
           description: >
             This setting enables the afternoon schedule.
-          default: afternoon_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable afternoon schedule
-                  value: "afternoon_schedule_enabled"
-                - label: Disable afternoon schedule
-                  value: "afternoon_schedule_disabled"                     
+            boolean:                    
         afternoon_time:
           name: Afternoon Time
           description: >
@@ -342,14 +300,8 @@ blueprint:
           name: Enable dusk schedule
           description: >
             This setting enables the dusk schedule.
-          default: dusk_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable dusk schedule
-                  value: "dusk_schedule_enabled"
-                - label: Disable dusk schedule
-                  value: "dusk_schedule_disabled"                     
+            boolean:                   
         dusk_offset:
           name: Dusk Offset Time
           description: >
@@ -382,14 +334,8 @@ blueprint:
           name: Enable bedroom schedule
           description: >
             This setting enables the bedroom schedule.
-          default: bedroom_schedule_disabled
           selector:
-            select:
-              options:
-                - label: Enable bedroom schedule
-                  value: "bedroom_schedule_enabled"
-                - label: Disable bedroom schedule
-                  value: "bedroom_schedule_disabled"                     
+            boolean:                
         bedroom_time:
           name: Bedroom Time
           description: >
@@ -468,12 +414,7 @@ blueprint:
             This setting enables schedule modifiers when having guests.
           default: guest_settings_disabled
           selector:
-            select:
-              options:
-                - label: Enable guest settings
-                  value: "guest_settings_enabled"
-                - label: Disable guest settings
-                  value: "guest_settings_disabled"    
+            boolean:   
       
         dinner_guest_sensor:
           name: Dinner Guest Helper
@@ -549,39 +490,30 @@ variables:
   start_scenes: !input start_scenes
   
   dinner_time: !input dinner_time
-  enable_dinner_schedule: !input enable_dinner_schedule
   dinner_scenes: !input dinner_scenes
   
   evening_time: !input evening_time
-  enable_evening_schedule: !input enable_evening_schedule
   evening_scenes: !input evening_scenes
   
   night_time: !input night_time
-  enable_night_schedule: !input enable_night_schedule
   night_scenes: !input night_scenes
   
   wakeup_time: !input wakeup_time
-  enable_wakeup_schedule: !input enable_wakeup_schedule
   wakeup_scenes: !input wakeup_scenes
   
   morning_time: !input morning_time
-  enable_morning_schedule: !input enable_morning_schedule
   morning_scenes: !input morning_scenes
   
   lunch_time: !input lunch_time
-  enable_lunch_schedule: !input enable_lunch_schedule
   lunch_scenes: !input lunch_scenes
   
   afternoon_time: !input afternoon_time
-  enable_afternoon_schedule: !input enable_afternoon_schedule
   afternoon_scenes: !input afternoon_scenes
   
   dusk_offset: !input dusk_offset
-  enable_dusk_schedule: !input enable_dusk_schedule
   dusk_scenes: !input dusk_scenes
   
   bedroom_time: !input bedroom_time
-  enable_bedroom_schedule: !input enable_bedroom_schedule
   bedroom_scenes: !input bedroom_scenes
   
   end_scenes: !input end_scenes
@@ -602,25 +534,31 @@ triggers:
   - at: !input dinner_time
     id: shabbat_dinner
     trigger: time
-    enabled: "{{ enable_dinner_schedule == 'enabled' }}"
+    enabled: !input enable_dinner_schedule
   - at: !input evening_time
     id: shabbat_evening
     trigger: time
+    enabled: !input enable_evening_schedule
   - at: !input night_time
     id: shabbat_night
     trigger: time
+    enabled: !input enable_night_schedule
   - at: !input wakeup_time
     id: shabbat_wakeup
     trigger: time
+    enabled: !input enable_wakeup_schedule
   - at: !input morning_time
     id: shabbat_morning
     trigger: time
+    enabled: !input enable_morning_schedule
   - at: !input lunch_time
     id: shabbat_lunch
     trigger: time
+    enabled: !input enable_lunch_schedule
   - at: !input afternoon_time
     id: shabbat_afternoon
     trigger: time
+    enabled: !input enable_afternoon_schedule
   - event: sunset
     offset: !input dusk_offset
     id: shabbat_dusk
@@ -628,7 +566,7 @@ triggers:
   - at: !input bedroom_time
     id: shabbat_kid_bedtime
     trigger: time
-    enabled: false
+    enabled: !input enable_bedroom_schedule
   - trigger: state
     entity_id:
       - !input shabbat_trigger
@@ -653,55 +591,46 @@ conditions:
                   - condition: trigger
                     id:
                       - shabbat_dinner
-                  - "{{ enable_dinner_schedule == 'dinner_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_evening
-                  - "{{ evening_evening_schedule == 'evening_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_night
-                  - "{{ night_evening_schedule == 'night_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_wakeup
-                  - "{{ enable_wakeup_schedule == 'wakeup_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_morning
-                  - "{{ enable_morning_schedule == 'morning_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_lunch
-                  - "{{ enable_lunch_schedule == 'lunch_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_afternoon
-                  - "{{ enable_afternoon_schedule == 'afternoon_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_dusk
-                  - "{{ enable_dusk_schedule == 'dusk_schedule_enabled' }}"
               - condition: and
                 conditions:
                   - condition: trigger
                     id:
                       - shabbat_kid_bedtime
-                  - "{{ enable_bedtime_schedule == 'bedtime_schedule_enabled' }}"
       - condition: and
         conditions:
           - condition: state
