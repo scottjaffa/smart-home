@@ -602,7 +602,7 @@ triggers:
   - at: !input dinner_time
     id: shabbat_dinner
     trigger: time
-    enabled: {{ !input enable_dinner_schedule == 'enabled' }}
+    enabled: "{{ !input enable_dinner_schedule == 'enabled' }}"
   - at: !input evening_time
     id: shabbat_evening
     trigger: time
