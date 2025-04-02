@@ -47,11 +47,8 @@ blueprint:
           default: start_schedule_disabled
           selector:
             select:
-              options:
-                - label: Enable start schedule
-                  value: "start_schedule_enabled"
-                - label: Disable start schedule
-                  value: "start_schedule_disabled" 
+              boolean:
+
 
     start_settings:
       name: "Start *"
@@ -77,25 +74,17 @@ variables:
 
   start_scenes: !input start_scenes
 
-  enable_start_schedule: !input enable_start_schedule
-
-
 
   scene_entities: "{{ start_scenes | select('match', '^scene\\..*') | list }}"
 
-  enabled_variable: >
-    {% if enable_start_schedule == 'start_schedule_enabled' %}
-      true
-    {% else %}
-      false
-    {% endif %}
+
 
 
 triggers:
   - trigger: time
     at: "18:00:00"
     id: start
-    enabled:
+    enabled: !input enable_start_schedule
     
 condition:
   - condition: or
@@ -112,7 +101,7 @@ condition:
                   - condition: trigger
                     id:
                       - start
-                      - "{{ enabled_variable }}"
+                      - {{ enabled_variable }}
 
 actions:
   - choose:
