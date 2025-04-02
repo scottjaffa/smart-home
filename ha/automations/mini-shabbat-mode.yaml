@@ -87,20 +87,9 @@ triggers:
     enabled: !input enable_start_schedule
     
 condition:
-  - condition: or
-    conditions:
-      - condition: and
-        conditions:
-          - condition: state
-            entity_id: !input shabbat_trigger
-            state: "on"
-          - condition: or
-            conditions:
-              - condition: and
-                conditions:
-                  - condition: trigger
-                    id:
-                      - start
+  - condition: trigger
+    id:
+      - start
 
 actions:
   - choose:
