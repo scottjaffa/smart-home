@@ -97,7 +97,7 @@ blueprint:
           name: Dinner Time
           description: >
 
-          default: "7:30:00"
+          default: "19:30:00"
           selector:
             time:       
         dinner_scenes:
@@ -283,7 +283,7 @@ blueprint:
           name: Afternoon Time
           description: >
 
-          default: "2:30:00"
+          default: "14:30:00"
           selector:
             time:       
         afternoon_scenes:
@@ -370,6 +370,13 @@ blueprint:
       name: "Food Heating Settings"
       icon: mdi:heat-wave
       input:
+        enable_warming:
+          name: Enable warming devices
+          description: >
+            This setting enables the warming devices.
+          default: false
+          selector:
+            boolean: 
         warming_devices:
           name: Warming Devices
           description: >
@@ -576,6 +583,22 @@ triggers:
     id: shabbat_kid_bedtime
     trigger: time
     enabled: !input enable_bedroom_schedule
+
+  - at: !input dinner_warming
+    id: dinner_warming
+    trigger: time
+    enabled: !input enable_warming
+
+  - at: !input lunch_warming
+    id: lunch_warming
+    trigger: time
+    enabled: !input enable_warming
+
+  - at: !input third_meal_warming
+    id: third_meal_warming
+    trigger: time
+    enabled: !input enable_warming
+    
   - trigger: state
     entity_id:
       - !input shabbat_trigger
@@ -640,6 +663,22 @@ conditions:
                   - condition: trigger
                     id:
                       - shabbat_kid_bedtime
+                      
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - dinner_warming
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - lunch_warming
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - third_meal_warming
       - condition: and
         conditions:
           - condition: state
@@ -767,22 +806,6 @@ actions:
             conditions:
               - condition: trigger
                 id:
-                  - shabbat_lunch_warm
-        sequence:
-          - type: turn_on
-            device_id: 79276416b5df417ba3ce9957ae7c7f87
-            entity_id: b480c7338cf051bb64184125ea8bfd6c
-            domain: switch
-          - type: turn_on
-            device_id: 4f07ad718997a375da5d1271bba013ce
-            entity_id: 4fa06dd233f6d1f54e896f41f40657b9
-            domain: switch
-        alias: Trigger - Lunch Warmer
-      - conditions:
-          - condition: and
-            conditions:
-              - condition: trigger
-                id:
                   - shabbat_afternoon
         sequence:
           - action: scene.turn_on
@@ -822,6 +845,18 @@ actions:
             data: {}
             target:
               entity_id: "{{ end_scene_entitities }}"
+            - type: turn_off
+            device_id: 79276416b5df417ba3ce9957ae7c7f87
+            entity_id: b480c7338cf051bb64184125ea8bfd6c
+            domain: switch
+          - type: turn_off
+            device_id: 4f07ad718997a375da5d1271bba013ce
+            entity_id: 4fa06dd233f6d1f54e896f41f40657b9
+            domain: switch
+          - type: turn_off
+            device_id: a668a5c93675d400657df8a31af54d1c
+            entity_id: 694cae63989a74c06d9830a3f0591144
+            domain: light
         alias: Trigger - End
       - conditions:
           - condition: and
@@ -836,12 +871,45 @@ actions:
             target:
               entity_id: !input bedroom_scenes
         alias: Trigger - Kid Bedtime
+
+
+
       - conditions:
           - condition: and
             conditions:
               - condition: trigger
                 id:
-                  - shabbat_lunch_end
+                  - dinner_warming
+              - condition: trigger
+                id:
+                  - lunch_warming
+              - condition: trigger
+                id:
+                  - third_meal_warming
+                  
+        sequence:
+          - type: turn_on
+            device_id: 79276416b5df417ba3ce9957ae7c7f87
+            entity_id: b480c7338cf051bb64184125ea8bfd6c
+            domain: switch
+          - type: turn_on
+            device_id: 4f07ad718997a375da5d1271bba013ce
+            entity_id: 4fa06dd233f6d1f54e896f41f40657b9
+            domain: switch
+        alias: Trigger - Meal Warm
+        
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - dinner_end
+              - condition: trigger
+                id:
+                  - lunch_end
+              - condition: trigger
+                id:
+                  - third_meal_end
         sequence:
           - type: turn_off
             device_id: 79276416b5df417ba3ce9957ae7c7f87
@@ -855,6 +923,6 @@ actions:
             device_id: a668a5c93675d400657df8a31af54d1c
             entity_id: 694cae63989a74c06d9830a3f0591144
             domain: light
-        alias: Trigger - Lunch End
+        alias: Trigger - Meal End
 
 mode: queued
