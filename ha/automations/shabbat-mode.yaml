@@ -90,7 +90,7 @@ blueprint:
           name: Enable dinner schedule
           description: >
             This setting enables the dinner schedule.
-          default: dinner_schedule_disabled
+          default: false
           selector:
             select:
               options:
@@ -602,7 +602,7 @@ triggers:
   - at: !input dinner_time
     id: shabbat_dinner
     trigger: time
-    enabled: !input dinner_schedule_enabled
+    enabled: !input enable_dinner_schedule
   - at: !input evening_time
     id: shabbat_evening
     trigger: time
