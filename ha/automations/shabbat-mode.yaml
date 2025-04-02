@@ -602,8 +602,7 @@ triggers:
   - at: !input dinner_time
     id: shabbat_dinner
     trigger: time
-    enabled: template
-    value_template: {{'true'}}
+    enabled: {{'true'}}
   - at: !input evening_time
     id: shabbat_evening
     trigger: time
