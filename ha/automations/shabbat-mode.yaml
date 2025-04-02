@@ -349,7 +349,7 @@ blueprint:
           name: Bedroom Time
           description: >
 
-          default: "7:00:00"
+          default: "19:00:00"
           selector:
             time:       
         bedroom_scenes:
