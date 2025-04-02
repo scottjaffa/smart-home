@@ -863,7 +863,7 @@ actions:
 
 
       - conditions:
-          - condition: and
+          - condition: or
             conditions:
               - condition: trigger
                 id:
@@ -887,7 +887,7 @@ actions:
         alias: Trigger - Meal Warm
         
       - conditions:
-          - condition: and
+          - condition: or
             conditions:
               - condition: trigger
                 id:
