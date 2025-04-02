@@ -27,7 +27,6 @@ blueprint:
   input:
     enable_start_schedule:
       name: Enable start schedule
-      default: start_schedule_disabled
       selector:
         boolean:
 
