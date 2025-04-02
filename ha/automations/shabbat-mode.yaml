@@ -90,6 +90,7 @@ blueprint:
           name: Enable dinner schedule
           description: >
             This setting enables the dinner schedule.
+          default: false
           selector:
             boolean:
         dinner_time:
@@ -120,6 +121,7 @@ blueprint:
           name: Enable evening schedule
           description: >
             This setting enables the evening schedule.
+          default: false
           selector:
             boolean:                   
         evening_time:
@@ -150,6 +152,7 @@ blueprint:
           name: Enable night schedule
           description: >
             This setting enables the night schedule.
+          default: false
           selector:
             boolean:            
         night_time:
@@ -180,6 +183,7 @@ blueprint:
           name: Enable wakeup schedule
           description: >
             This setting enables the wakeup schedule.
+          default: false
           selector:
             boolean:                    
         wakeup_time:
@@ -210,6 +214,7 @@ blueprint:
           name: Enable morning schedule
           description: >
             This setting enables the morning schedule.
+          default: false
           selector:
             boolean:                  
         morning_time:
@@ -240,6 +245,7 @@ blueprint:
           name: Enable lunch schedule
           description: >
             This setting enables the lunch schedule.
+          default: false
           selector:
             boolean:                    
         lunch_time:
@@ -270,6 +276,7 @@ blueprint:
           name: Enable afternoon schedule
           description: >
             This setting enables the afternoon schedule.
+          default: false
           selector:
             boolean:                    
         afternoon_time:
@@ -300,6 +307,7 @@ blueprint:
           name: Enable dusk schedule
           description: >
             This setting enables the dusk schedule.
+          default: false
           selector:
             boolean:                   
         dusk_offset:
@@ -334,6 +342,7 @@ blueprint:
           name: Enable bedroom schedule
           description: >
             This setting enables the bedroom schedule.
+          default: false
           selector:
             boolean:                
         bedroom_time:
@@ -412,7 +421,7 @@ blueprint:
           name: Enable guest settings
           description: >
             This setting enables schedule modifiers when having guests.
-          default: guest_settings_disabled
+          default: false
           selector:
             boolean:   
       
