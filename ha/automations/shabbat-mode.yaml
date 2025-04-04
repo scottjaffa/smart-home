@@ -622,6 +622,11 @@ conditions:
                 conditions:
                   - condition: trigger
                     id:
+                      - shabbat_start
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
                       - shabbat_dinner
               - condition: and
                 conditions:
