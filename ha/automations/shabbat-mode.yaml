@@ -709,12 +709,12 @@ actions:
             data:
               skip_condition: true
             target:
-              entity_id: "{{ start_script_entitities }}"
+              entity_id: "{{ start_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: "{{ start_scene_entitities }}"
+              entity_id: "{{ start_scene_entities }}"
           - if:
               - condition: state
                 entity_id: input_boolean.shabbat_lunch_guests
@@ -849,7 +849,7 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: "{{ end_scene_entitities }}"
+              entity_id: "{{ end_scene_entities }}"
         alias: Trigger - End
       - conditions:
           - condition: and
