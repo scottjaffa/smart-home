@@ -839,7 +839,7 @@ actions:
                 id:
                   - shabbat_end
         sequence:
-          - action: script.trigger
+          - action: script.turn_on
             metadata: {}
             data:
               skip_condition: true
