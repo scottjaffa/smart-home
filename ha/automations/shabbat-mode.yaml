@@ -841,10 +841,10 @@ actions:
         sequence:
           - action: script.turn_on
             metadata: {}
-            data:
-              skip_condition: true
+            data: {}
             target:
               entity_id: "{{ end_script_entities }}"
+              
           - action: scene.turn_on
             metadata: {}
             data: {}
