@@ -57,9 +57,9 @@ blueprint:
           default: []
           selector:
             entity:
+              multiple: true
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -76,9 +76,9 @@ blueprint:
           default: []
           selector:
             entity:
+              multiple: true
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
