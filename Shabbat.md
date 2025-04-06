@@ -11,7 +11,7 @@
   ## Approach
   Note:  Both shabbat_switcher and shabbat mode are blueprints!
   Using the Jewish Calendar integration, trigger an automation using the issur melacha entity (binary_sensor.jewish_calendar_issur_melacha_in_effect)  
-  [shabbat_switcher](/ha/automations/shabbat_switcher.yaml)  
+  [shabbat_switcher](ha/automations/shabbat-switcher.yaml)  
   Have that automation test for any conditions, such as away, and triggers the appropriate action (ie. turn shabbat mode on if off and not away, turn shabbat mode off if it was on)  
   This action is setting an input boolean - "Shabbat Active"  
   Have an automation which controls all schedules for Shabbat  
