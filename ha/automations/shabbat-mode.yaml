@@ -805,19 +805,6 @@ actions:
             conditions:
               - condition: trigger
                 id:
-                  - shabbat_dinner_end
-        sequence:
-          - action: scene.turn_on
-            metadata: {}
-            data: {}
-            target:
-              entity_id: !input dinner_end_scenes
-        alias: Trigger - Dinner End
-      - conditions:
-          - condition: and
-            conditions:
-              - condition: trigger
-                id:
                   - shabbat_evening
         sequence:
           - action: scene.turn_on
@@ -878,19 +865,6 @@ actions:
             target:
               entity_id: !input lunch_scenes
         alias: Trigger - Lunch
-      - conditions:
-          - condition: and
-            conditions:
-              - condition: trigger
-                id:
-                  - shabbat_lunch_end
-        sequence:
-          - action: scene.turn_on
-            metadata: {}
-            data: {}
-            target:
-              entity_id: !input lunch_end_scenes
-        alias: Trigger - Lunch End
       - conditions:
           - condition: and
             conditions:
@@ -989,10 +963,11 @@ actions:
             device_id: 4f07ad718997a375da5d1271bba013ce
             entity_id: 4fa06dd233f6d1f54e896f41f40657b9
             domain: switch
-          - type: turn_off
-            device_id: a668a5c93675d400657df8a31af54d1c
-            entity_id: 694cae63989a74c06d9830a3f0591144
-            domain: light
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input lunch_end_scenes
         alias: Trigger - Meal End
 
 mode: queued
