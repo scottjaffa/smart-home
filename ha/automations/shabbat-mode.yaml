@@ -100,7 +100,26 @@ blueprint:
           default: "19:30:00"
           selector:
             time:       
+        dinner_end_time:
+          name: Dinner End Time
+          description: >
+
+          default: "21:30:00"
+          selector:
+            time:       
         dinner_scenes:
+          name: Dinner Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              filter:
+                domain:
+                  - automation
+                  - scene
+                  - script
+        dinner_end_scenes:
           name: Dinner Scenes, Scripts, Automations
           description: >
             
@@ -254,9 +273,28 @@ blueprint:
 
           default: "12:30:00"
           selector:
-            time:       
+            time:     
+        lunch_end_time:
+          name: Lunch EndTime
+          description: >
+
+          default: "16:00:00"
+          selector:
+            time:   
         lunch_scenes:
           name: Lunch Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              filter:
+                domain:
+                  - automation
+                  - scene
+                  - script
+        lunch_end_scenes:
+          name: Lunch End Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -394,7 +432,7 @@ blueprint:
           name: Dinner Warming Device Activation
           description: >
 
-          default: "19:30:00"
+          default: "19:00:00"
           selector:
             time:     
             
@@ -507,6 +545,8 @@ variables:
   
   dinner_time: !input dinner_time
   dinner_scenes: !input dinner_scenes
+  dinner_end_time: !input dinner_end_time
+  dinner_end_scenes: !input dinner_end_scenes
   
   evening_time: !input evening_time
   evening_scenes: !input evening_scenes
@@ -521,7 +561,9 @@ variables:
   morning_scenes: !input morning_scenes
   
   lunch_time: !input lunch_time
-  lunch_scenes: !input lunch_scenes
+  lunch_scenes: !input lunch_scenes  
+  lunch_end_time: !input lunch_end_time
+  lunch_end_scenes: !input lunch_end_scenes
   
   afternoon_time: !input afternoon_time
   afternoon_scenes: !input afternoon_scenes
@@ -551,6 +593,10 @@ triggers:
     id: shabbat_dinner
     trigger: time
     enabled: !input enable_dinner_schedule
+  - at: !input dinner_end_time
+    id: shabbat_dinner_end
+    trigger: time
+    enabled: !input enable_dinner_schedule
   - at: !input evening_time
     id: shabbat_evening
     trigger: time
@@ -569,6 +615,10 @@ triggers:
     enabled: !input enable_morning_schedule
   - at: !input lunch_time
     id: shabbat_lunch
+    trigger: time
+    enabled: !input enable_lunch_schedule
+  - at: !input lunch_end_time
+    id: shabbat_lunch_end
     trigger: time
     enabled: !input enable_lunch_schedule
   - at: !input afternoon_time
@@ -594,10 +644,10 @@ triggers:
     trigger: time
     enabled: !input enable_warming
 
-  - at: !input third_meal_warming
-    id: third_meal_warming
-    trigger: time
-    enabled: !input enable_warming
+#  - at: !input third_meal_warming
+#    id: third_meal_warming
+#    trigger: time
+#    enabled: !input enable_warming
     
   - trigger: state
     entity_id:
@@ -632,6 +682,11 @@ conditions:
                 conditions:
                   - condition: trigger
                     id:
+                      - shabbat_dinner_end
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
                       - shabbat_evening
               - condition: and
                 conditions:
@@ -653,6 +708,11 @@ conditions:
                   - condition: trigger
                     id:
                       - shabbat_lunch
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_lunch_end
               - condition: and
                 conditions:
                   - condition: trigger
@@ -745,6 +805,19 @@ actions:
             conditions:
               - condition: trigger
                 id:
+                  - shabbat_dinner_end
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input dinner_end_scenes
+        alias: Trigger - Dinner End
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
                   - shabbat_evening
         sequence:
           - action: scene.turn_on
@@ -805,6 +878,19 @@ actions:
             target:
               entity_id: !input lunch_scenes
         alias: Trigger - Lunch
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_lunch_end
+        sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input lunch_end_scenes
+        alias: Trigger - Lunch End
       - conditions:
           - condition: and
             conditions:
@@ -895,13 +981,13 @@ actions:
             conditions:
               - condition: trigger
                 id:
-                  - dinner_end
+                  - shabbat_dinner_end
               - condition: trigger
                 id:
-                  - lunch_end
+                  - shabbat_lunch_end
               - condition: trigger
                 id:
-                  - third_meal_end
+                  - shabbat_third_meal_end
         sequence:
           - type: turn_off
             device_id: 79276416b5df417ba3ce9957ae7c7f87
