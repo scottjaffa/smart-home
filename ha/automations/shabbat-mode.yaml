@@ -967,10 +967,6 @@ actions:
                   
         sequence:
           - type: turn_on
-            device_id: 79276416b5df417ba3ce9957ae7c7f87
-            entity_id: b480c7338cf051bb64184125ea8bfd6c
-            domain: switch
-          - type: turn_on
             device_id: 4f07ad718997a375da5d1271bba013ce
             entity_id: 4fa06dd233f6d1f54e896f41f40657b9
             domain: switch
@@ -989,10 +985,6 @@ actions:
                 id:
                   - shabbat_third_meal_end
         sequence:
-          - type: turn_off
-            device_id: 79276416b5df417ba3ce9957ae7c7f87
-            entity_id: b480c7338cf051bb64184125ea8bfd6c
-            domain: switch
           - type: turn_off
             device_id: 4f07ad718997a375da5d1271bba013ce
             entity_id: 4fa06dd233f6d1f54e896f41f40657b9
