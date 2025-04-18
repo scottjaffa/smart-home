@@ -108,7 +108,7 @@ blueprint:
           selector:
             time:       
         dinner_scenes:
-          name: Dinner Scenes, Scripts, Automations
+          name: Dinner Start Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -120,7 +120,7 @@ blueprint:
                   - scene
                   - script
         dinner_end_scenes:
-          name: Dinner Scenes, Scripts, Automations
+          name: Dinner End Scenes, Scripts, Automations
           description: >
             
           default: []
@@ -282,7 +282,7 @@ blueprint:
           selector:
             time:   
         lunch_scenes:
-          name: Lunch Scenes, Scripts, Automations
+          name: Lunch Start Scenes, Scripts, Automations
           description: >
             
           default: []
