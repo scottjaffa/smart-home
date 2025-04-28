@@ -582,6 +582,8 @@ variables:
   end_scene_entities: "{{ end_scenes | select('match', '^scene\\..*') | list }}"
   end_script_entities: "{{ end_scenes | select('match', '^script\\..*') | list }}"
 
+  warming_devices: !input warming_devices
+
 triggers:
   - trigger: state
     entity_id:
@@ -940,10 +942,11 @@ actions:
                   - third_meal_warming
                   
         sequence:
-          - type: turn_on
-            device_id: 4f07ad718997a375da5d1271bba013ce
-            entity_id: 4fa06dd233f6d1f54e896f41f40657b9
-            domain: switch
+          - action: switch.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input warming_devices
         alias: Trigger - Meal Warm
         
       - conditions:
@@ -959,10 +962,11 @@ actions:
                 id:
                   - shabbat_third_meal_end
         sequence:
-          - type: turn_off
-            device_id: 4f07ad718997a375da5d1271bba013ce
-            entity_id: 4fa06dd233f6d1f54e896f41f40657b9
-            domain: switch
+          - action: switch.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input warming_devices
           - action: scene.turn_on
             metadata: {}
             data: {}
