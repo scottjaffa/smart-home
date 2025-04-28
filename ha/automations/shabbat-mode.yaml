@@ -789,6 +789,25 @@ actions:
                     timedelta(minutes=states('input_number.lunch_guest_modifier')
                     | int(0))).time() }}
                   entity_id: input_datetime.lunch_end_time_dev
+          - if:
+              - condition: time
+                after: !input bedroom_time
+            then:
+              - action: scene.turn_on
+                metadata: {}
+                data: {}
+                target:
+                  entity_id: !input bedroom_scenes
+          - if:
+              - condition: time
+                after: !input dinner_time
+            then:
+              - action: scene.turn_on
+                metadata: {}
+                data: {}
+                target:
+                  entity_id: !input dinner_scenes     
+                  
       - conditions:
           - condition: and
             conditions:
