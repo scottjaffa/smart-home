@@ -953,18 +953,18 @@ actions:
         alias: Trigger - Meal End
 
   - if:
-  - condition: or
-    conditions:
-      - condition: trigger
-        id:
-          - shabbat_kid_bedtime
-      - condition: and
-        conditions:
-          - condition: trigger
-            id:
-              - shabbat_start
-          - condition: time
-            after: !input bedroom_time
+    - condition: or
+      conditions:
+        - condition: trigger
+          id:
+            - shabbat_kid_bedtime
+        - condition: and
+          conditions:
+            - condition: trigger
+              id:
+                - shabbat_start
+            - condition: time
+              after: !input bedroom_time
     then:
       sequence:
         - action: scene.turn_on
@@ -975,18 +975,18 @@ actions:
 alias: Kid Bedtime
 
   - if:
-  - condition: or
-    conditions:
-      - condition: trigger
-        id:
-          - shabbat_dinner
-      - condition: and
-        conditions:
-          - condition: trigger
-            id:
-              - shabbat_start
-          - condition: time
-            after: !input dinner_time
+    - condition: or
+      conditions:
+        - condition: trigger
+          id:
+            - shabbat_dinner
+        - condition: and
+          conditions:
+            - condition: trigger
+              id:
+                - shabbat_start
+            - condition: time
+              after: !input dinner_time
     then:
       sequence:
         - action: scene.turn_on
