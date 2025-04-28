@@ -965,6 +965,7 @@ actions:
                 - shabbat_start
             - condition: time
               after: !input bedroom_time
+          alias: Shabbat starts after kid bedtime  
     then:
       sequence:
         - action: scene.turn_on
@@ -987,6 +988,7 @@ actions:
                 - shabbat_start
             - condition: time
               after: !input dinner_time
+          alias: Shabbat starts after dinnertime    
     then:
       sequence:
         - action: scene.turn_on
