@@ -798,6 +798,7 @@ actions:
                 data: {}
                 target:
                   entity_id: !input bedroom_scenes
+            alias: Start Bedtime Scenes
           - if:
               - condition: time
                 after: !input dinner_time
@@ -806,7 +807,8 @@ actions:
                 metadata: {}
                 data: {}
                 target:
-                  entity_id: !input dinner_scenes     
+                  entity_id: !input dinner_scenes   
+            alias: Start Dinner Scenes
                   
       - conditions:
           - condition: and
