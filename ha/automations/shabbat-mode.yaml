@@ -905,6 +905,12 @@ actions:
             data: {}
             target:
               entity_id: "{{ end_script_entities }}"
+          
+          - action: switch.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input warming_devices
               
           - action: scene.turn_on
             metadata: {}
