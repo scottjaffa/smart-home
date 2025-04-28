@@ -789,40 +789,7 @@ actions:
                     timedelta(minutes=states('input_number.lunch_guest_modifier')
                     | int(0))).time() }}
                   entity_id: input_datetime.lunch_end_time_dev
-          - if:
-              - condition: time
-                after: !input bedroom_time
-            then:
-              - action: scene.turn_on
-                metadata: {}
-                data: {}
-                target:
-                  entity_id: !input bedroom_scenes
-            alias: Start Bedtime Scenes
-          - if:
-              - condition: time
-                after: !input dinner_time
-            then:
-              - action: scene.turn_on
-                metadata: {}
-                data: {}
-                target:
-                  entity_id: !input dinner_scenes   
-            alias: Start Dinner Scenes
-                  
-      - conditions:
-          - condition: and
-            conditions:
-              - condition: trigger
-                id:
-                  - shabbat_dinner
-        sequence:
-          - action: scene.turn_on
-            metadata: {}
-            data: {}
-            target:
-              entity_id: !input dinner_scenes
-        alias: Trigger - Dinner
+
       - conditions:
           - condition: and
             conditions:
@@ -939,22 +906,7 @@ actions:
             target:
               entity_id: "{{ end_scene_entities }}"
         alias: Trigger - End
-      - conditions:
-          - condition: and
-            conditions:
-              - condition: trigger
-                id:
-                  - shabbat_kid_bedtime
-        sequence:
-          - action: scene.turn_on
-            metadata: {}
-            data: {}
-            target:
-              entity_id: !input bedroom_scenes
-        alias: Trigger - Kid Bedtime
-
-
-
+        
       - conditions:
           - condition: or
             conditions:
@@ -967,7 +919,6 @@ actions:
               - condition: trigger
                 id:
                   - third_meal_warming
-                  
         sequence:
           - action: switch.turn_on
             metadata: {}
@@ -1000,5 +951,50 @@ actions:
             target:
               entity_id: !input lunch_end_scenes
         alias: Trigger - Meal End
+
+  - if:
+  - condition: or
+    conditions:
+      - condition: trigger
+        id:
+          - shabbat_kid_bedtime
+      - condition: and
+        conditions:
+          - condition: trigger
+            id:
+              - shabbat_start
+          - condition: time
+            after: !input bedroom_time
+    then:
+      sequence:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: !input bedroom_scenes
+alias: Kid Bedtime
+
+  - if:
+  - condition: or
+    conditions:
+      - condition: trigger
+        id:
+          - shabbat_dinner
+      - condition: and
+        conditions:
+          - condition: trigger
+            id:
+              - shabbat_start
+          - condition: time
+            after: !input dinner_time
+    then:
+      sequence:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: !input dinner_scenes
+alias: Dinner
+
 
 mode: queued
