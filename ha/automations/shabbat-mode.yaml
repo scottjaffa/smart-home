@@ -972,7 +972,7 @@ actions:
           data: {}
           target:
             entity_id: !input bedroom_scenes
-alias: Kid Bedtime
+    alias: Kid Bedtime
 
   - if:
     - condition: or
@@ -994,7 +994,7 @@ alias: Kid Bedtime
           data: {}
           target:
             entity_id: !input dinner_scenes
-alias: Dinner
+    alias: Dinner
 
 
 mode: queued
