@@ -33,7 +33,7 @@ blueprint:
           description: >
             The sensor which indicates we are in Shabbat Mode
             
-            See companion blueprint for advanced settings for enabling Shabbat Mode
+            See Shabbat Switcher companion blueprint for advanced settings for enabling Shabbat Mode
             
             https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-switcher.yaml
           default: input_boolean.shabbat_active
@@ -50,9 +50,10 @@ blueprint:
       icon: mdi:lightbulb-on-outline
       input:
         start_scenes:
-          name: Start Scenes, Scripts, Automations
+          name: Start scenes and scripts
           description: >
-            Scenes, scripts, automations for start of shabbat
+            Scenes and scripts to run at the start of shabbat
+            Scripts run before scenes
 
           default: []
           selector:
@@ -68,9 +69,10 @@ blueprint:
       icon: mdi:lightbulb-on-outline
       input:
         end_scenes:
-          name: End Scenes, Scripts, Automations
+          name: End scenes and scripts
           description: >
-            Scenes, scripts, automations for end of shabbat
+            Scenes and scripts to run at the end of shabbat
+            Scripts run before scenes
 
 
           default: []
@@ -345,6 +347,7 @@ blueprint:
           name: Enable dusk schedule
           description: >
             This setting enables the dusk schedule.
+            **Warning** If you use the bedroom settings below, do not put the bedroom in dusk as in the summer dusk may run after bedroom settings, overriding them.  Use the bedroom dusk setting instead for those rooms.
           default: false
           selector:
             boolean:                   
@@ -352,7 +355,7 @@ blueprint:
           name: Dusk Offset Time
           description: >
 
-          default: -45
+          default: -75
           selector:
             number:
               min: -120
@@ -382,7 +385,31 @@ blueprint:
             This setting enables the bedroom schedule.
           default: false
           selector:
-            boolean:                
+            boolean:  
+        bedroom_dusk_offset:
+          name: Bedroom Dusk Setting
+          description: >
+          How early before dusk to run
+          default: -75
+          selector:
+            number:
+              min: -120
+              max: 0
+              step: 5
+              unit_of_measurement: minutes
+        bedroom_dusk_scenes:
+          name: Bedroom Dusk Scenes, Scripts, Automations
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              filter:
+                domain:
+                  - automation
+                  - scene
+                  - script
+    
         bedroom_time:
           name: Bedroom Time
           description: >
@@ -412,6 +439,7 @@ blueprint:
           name: Enable warming devices
           description: >
             This setting enables the warming devices.
+            They will turn off at the end of the meal schedule set above.  
           default: false
           selector:
             boolean: 
@@ -452,91 +480,91 @@ blueprint:
           selector:
             time:   
              
-    device_settings:
-      name: "Device Settings"
-      icon: mdi:light-switch-off
-      collapsed: true
+#    device_settings:
+#      name: "Device Settings"
+#      icon: mdi:light-switch-off
+#      collapsed: true
       
-    guests:
-      name: "Guest Settings"
-      icon: mdi:account-plus
-      collapsed: true
-      input:
-        enable_guest_settings:
-          name: Enable guest settings
-          description: >
-            This setting enables schedule modifiers when having guests.
-          default: false
-          selector:
-            boolean:   
+#    guests:
+#      name: "Guest Settings"
+#      icon: mdi:account-plus
+#      collapsed: true
+#      input:
+#        enable_guest_settings:
+#          name: Enable guest settings
+#          description: >
+#            This setting enables schedule modifiers when having guests.
+#          default: false
+#          selector:
+#            boolean:   
       
-        dinner_guest_sensor:
-          name: Dinner Guest Helper
-          description: >
-            A toggle boolean for when having dinner guests
-          default: input_boolean.dinner_guests
-          selector:
-            entity:
-              filter:
-                domain:
-                  - input_boolean
-        lunch_guest_sensor:
-          name: Lunch Guest Helper
-          description: >
-            A toggle boolean for when having lunch guests
-          default: input_boolean.lunch_guests
-          selector:
-            entity:
-              filter:
-                domain:
-                  - input_boolean
-        sleeping_guest_sensor:
-          name: Sleeping Guest Helper
-          description: >
-            A toggle boolean for when having sleeping guests
-          default: input_boolean.sleeping_guests
-          selector:
-            entity:
-              filter:
-                domain:
-                  - input_boolean
+#        dinner_guest_sensor:
+#          name: Dinner Guest Helper
+#          description: >
+#            A toggle boolean for when having dinner guests
+#          default: input_boolean.dinner_guests
+#          selector:
+#            entity:
+#              filter:
+#                domain:
+#                  - input_boolean
+#        lunch_guest_sensor:
+#          name: Lunch Guest Helper
+#          description: >
+#            A toggle boolean for when having lunch guests
+#          default: input_boolean.lunch_guests
+#          selector:
+#            entity:
+#              filter:
+#                domain:
+#                  - input_boolean
+#        sleeping_guest_sensor:
+#          name: Sleeping Guest Helper
+#          description: >
+#            A toggle boolean for when having sleeping guests
+#          default: input_boolean.sleeping_guests
+#          selector:
+#            entity:
+#              filter:
+#                domain:
+#                  - input_boolean
 
-        guest_meal_extension:
-          name: Guest Meal Extension
-          description: >
-            How much time to extend the meal schedule when having gusets
+#        guest_meal_extension:
+#          name: Guest Meal Extension
+#          description: >
+#            How much time to extend the meal schedule when having gusets
 
-          default: 60
-          selector:
-            number:
-              min: 0
-              max: 120
-              step: 5
-              unit_of_measurement: minutes
+#          default: 60
+#          selector:
+#            number:
+#              min: 0
+#              max: 120
+#              step: 5
+#              unit_of_measurement: minutes
                  
 
 
 
       
-    Bathroom_settings:
-      name: "Bathroom"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
+#    Bathroom_settings:
+#      name: "Bathroom"
+#      icon: mdi:light-switch-off
+#      collapsed: true
 
-    vacuum_settings:
-      name: "Vacuum"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
+#    vacuum_settings:
+#      name: "Vacuum"
+#      icon: mdi:light-switch-off
+#      collapsed: true
              
-    lighting_settings:
-      name: "Lighting"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
+#    lighting_settings:
+#      name: "Lighting"
+#      icon: mdi:light-switch-off
+#      collapsed: true
 
-    other_settings:
-      name: "Other"
-      icon: mdi:lightbulb-on-outline
-      collapsed: true
+#    other_settings:
+#      name: "Other"
+#      icon: mdi:light-switch-off
+#      collapsed: true
 
 variables:
   shabbat_trigger: !input shabbat_trigger
@@ -776,19 +804,19 @@ actions:
             data: {}
             target:
               entity_id: "{{ start_scene_entities }}"
-          - if:
-              - condition: state
-                entity_id: input_boolean.shabbat_lunch_guests
-                state: "on"
-            then:
-              - action: input_datetime.set_datetime
-                metadata: {}
-                data:
-                  time: >-
-                    {{ (states('input_datetime.lunch_end_time_dev') | today_at +
-                    timedelta(minutes=states('input_number.lunch_guest_modifier')
-                    | int(0))).time() }}
-                  entity_id: input_datetime.lunch_end_time_dev
+#          - if:
+#              - condition: state
+#                entity_id: input_boolean.shabbat_lunch_guests
+#                state: "on"
+#            then:
+#              - action: input_datetime.set_datetime
+#                metadata: {}
+#                data:
+#                  time: >-
+#                    {{ (states('input_datetime.lunch_end_time_dev') | today_at +
+#                    timedelta(minutes=states('input_number.lunch_guest_modifier')
+#                    | int(0))).time() }}
+#                  entity_id: input_datetime.lunch_end_time_dev
 
       - conditions:
           - condition: and
