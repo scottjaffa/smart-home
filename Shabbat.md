@@ -1,5 +1,8 @@
 # Shabbat automation  
 
+The Shabbat automations provide the functionality to switch the house to a schedule based system on Shabbat and Yom Tov.
+This documents the approach and automations, which are linked below as Home Assistant blueprints.
+
 ## Goals  
 * one button Shabbat mode, or as close as I can get
 * automatically enabled and disabled at appropriate time, with override if away
@@ -9,7 +12,6 @@
 * User friendly - aka wife acceptance factor
 
   ## Approach
-  Note:  Both shabbat_switcher and shabbat mode are blueprints!
   Using the Jewish Calendar integration, trigger an automation using the issur melacha entity (binary_sensor.jewish_calendar_issur_melacha_in_effect)  
   [shabbat_switcher](ha/automations/shabbat-switcher.yaml)  
   Have that automation test for any conditions, such as away, and triggers the appropriate action (ie. turn shabbat mode on if off and not away, turn shabbat mode off if it was on)  
