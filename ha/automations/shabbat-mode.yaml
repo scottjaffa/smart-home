@@ -389,7 +389,7 @@ blueprint:
         bedroom_dusk_offset:
           name: Bedroom Dusk Setting
           description: >
-          How early before dusk to run
+            How early before dusk to run
           default: -75
           selector:
             number:
