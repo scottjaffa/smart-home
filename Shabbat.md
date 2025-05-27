@@ -9,7 +9,7 @@ Using a integration like [Jewish Calendar](https://www.home-assistant.io/integra
 
 
 
-  ## Quick Installation & Setup
+  ## Quick Installation
 
   1.  Install Jewish Calendar or another integration which provides a binary sensor to identify the start of Shabbat.
   2.  Create an input boolean helper, recommended name "Shabbat Active".
@@ -27,7 +27,34 @@ Using a integration like [Jewish Calendar](https://www.home-assistant.io/integra
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
-  
+
+## Detailed Installation
+
+
+## Usage
+
+### Shabbat Switcher
+
+### Shabbat Mode
+To use Shabbat Mode it needs a trigger sensor to identify when Shabbat mode is active.  Without this nothing will run.
+For start and end, select scripts and scenes to run (note that scripts run before scenes).
+For each each schedule, select whether it is active, what time it runs at, and the scripts and/or scenes to run.
+The configurable schedules are:
+
+  | Schedule  | Notes |
+| ------------- | ------------- |
+| Dinner  | This schedule has start and end times and scenes associated with it |
+| Evening  |   |
+| Night  |   |
+| Wakeup  |   |
+| Morning  |   |
+| Lunch  | This schedule has a start and end times and scenes associated with it |
+| Afternoon  |   |
+| Dusk  | This schedule is an offset from dusk time |
+| Bedroom  | This is designed for kids bedrooms that need to run earlier.  If it is set before Shabbat started, it will run at Shabbat start  |
+| Food Heating  | This defines the warming devices and the times they should start.  They automatically end at the end time of the meal schedules listed above  |
+
+
   
   
   Using the Jewish Calendar integration, trigger an automation using the issur melacha entity (binary_sensor.jewish_calendar_issur_melacha_in_effect)  
