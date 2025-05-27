@@ -40,9 +40,13 @@ Using a integration like [Jewish Calendar](https://www.home-assistant.io/integra
 ## Usage
 
 ### Shabbat Switcher
+Shabbat Switcher sets an input helper for when Shabbat mode is active.
+Set a binary sensor that denotes Shabbat Active, default being Jewish Calendar issur_melacha_in_effect.  
+Set any binary or boolean helper to disable Shabbat mode, such as a helper for 'away'.
+Optionally, set a no later than start time by enabling early Shabbat mode, set that time, and set the sensor which identifies if it is erev Shabbat/Chag.
 
 ### Shabbat Mode
-To use Shabbat Mode it needs a trigger sensor to identify when Shabbat mode is active.  Without this nothing will run.
+Shabbat Mode uses a trigger sensor to identify when Shabbat mode is active.  Without this nothing will run.  Default is "Shabbat Active".
 For start and end, select scripts and scenes to run (note that scripts run before scenes).
 For each each schedule, select whether it is active, what time it runs at, and the scripts and/or scenes to run.
 The configurable schedules are:
@@ -61,20 +65,6 @@ The configurable schedules are:
 | Food Heating  | This defines the warming devices and the times they should start.  They automatically end at the end time of the meal schedules listed above and also automatically shut off at Shabbat end  |
 
 
-  
-  
-  Using the Jewish Calendar integration, trigger an automation using the issur melacha entity (binary_sensor.jewish_calendar_issur_melacha_in_effect)  
-  [shabbat_switcher](ha/automations/shabbat-switcher.yaml)  
-  Shabbat Switcher uses that binary sensor to trigger.
-  Have that automation test for any conditions, such as away, and triggers the appropriate action (ie. turn shabbat mode on if off and not away, turn shabbat mode off if it was on)  
-  This action is setting an input boolean - "Shabbat Active"  
-  Have an automation which controls all schedules for Shabbat  
-  [shabbat_mode](ha/automations/shabbat-mode.yaml)  
-  Have a trigger based automation which at different times activates different scenes or scripts 
-  Use minimal other automations to ensure code is traceable  
-  I use a category of "Shabbat" for all the automations to make them easier to find.
-
-  Much more documentation is needed.
   
   
   
