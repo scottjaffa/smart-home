@@ -49,16 +49,16 @@ The configurable schedules are:
 
   | Schedule  | Notes |
 | ------------- | ------------- |
-| Dinner  | This schedule has start and end times and scenes associated with it |
+| Dinner  | This schedule has start and end times and scenes associated with it.  If it is set before Shabbat started, it will run at Shabbat start |
 | Evening  |   |
 | Night  |   |
 | Wakeup  |   |
 | Morning  |   |
-| Lunch  | This schedule has a start and end times and scenes associated with it |
+| Lunch  | This schedule has start and end times and scenes associated with it |
 | Afternoon  |   |
 | Dusk  | This schedule is an offset from dusk time |
 | Bedroom  | This is designed for kids bedrooms that need to run earlier.  If it is set before Shabbat started, it will run at Shabbat start  |
-| Food Heating  | This defines the warming devices and the times they should start.  They automatically end at the end time of the meal schedules listed above  |
+| Food Heating  | This defines the warming devices and the times they should start.  They automatically end at the end time of the meal schedules listed above and also automatically shut off at Shabbat end  |
 
 
   
