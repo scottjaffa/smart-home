@@ -12,7 +12,7 @@ Using a integration like [Jewish Calendar](https://www.home-assistant.io/integra
 | ------------- | ------------- |
 | [Jewish Calendar Integration](https://www.home-assistant.io/integrations/jewish_calendar/)  | This provides the sensor that denotes when Shabbat or Yom Tov is active, adjusting for candle lighting times and Yom Tov dates  | 
 | [Shabbat Switcher Blueprint](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-switcher.yaml) | This provides the logic for when to switch the house into Shabbat mode, including home/away and early Shabbat/Yom Tov |
-| Shabbat Active [input boolean helper](https://www.home-assistant.io/integrations/input_boolean/)  | This denotes when the house is in Shabbat mode and controls the activation of the main switch  |
+|  [Shabbat Active input boolean helper](https://www.home-assistant.io/integrations/input_boolean/)  | This denotes when the house is in Shabbat mode and controls the activation of the main switch  |
 | [Shabbat Mode Blueprint](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-mode.yaml) | This provides the automations controlling the house while active |
 | Shabbat Start Script | An example script that runs at the start of Shabbat mode |
 | Shabbat End Script | An example script that runs at the end of Shabbat mode |
