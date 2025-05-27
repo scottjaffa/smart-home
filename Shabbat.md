@@ -16,6 +16,7 @@ Using a integration like [Jewish Calendar](https://www.home-assistant.io/integra
 | [Shabbat Mode Blueprint](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-mode.yaml) | This provides the automations controlling the house while active |
 | Shabbat Start Script | An example script that runs at the start of Shabbat mode |
 | Shabbat End Script | An example script that runs at the end of Shabbat mode |
+| Device Enforcement Blueprint | An automation that will turn a device back on if it is turned off |
 
 
   ## Quick Installation
