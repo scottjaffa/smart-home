@@ -41,13 +41,13 @@ This requires [Home Assistant](https://www.home-assistant.io) and can work with 
 ## Usage
 
 ### Shabbat Switcher
-Shabbat Switcher sets an input helper which is used to define when Shabbat mode is active.
+Shabbat Switcher is an automation sets an input helper which is used to define when Shabbat mode is active.
 Set a binary sensor that denotes Shabbat Active, default being Jewish Calendar issur_melacha_in_effect.  
 Set any binary or boolean helper to disable Shabbat mode, such as a helper for 'away'.
 Optionally, set a no later than start time by enabling early Shabbat mode, set that time, and set the sensor which identifies if it is erev Shabbat/Chag.
 
 ### Shabbat Mode
-Shabbat Mode uses a trigger sensor to identify when Shabbat mode is active.  Without this nothing will run.  Default is "Shabbat Active".
+Shabbat Mode is an automation which runs the house when Shabbat mode is active.  It uses a binary or boolean sensor to denote when to run.  Default is "Shabbat Active".
 For start and end, select scripts and scenes to run (note that scripts run before scenes).
 For each each schedule, select whether it is active, what time it runs at, and the scripts and/or scenes to run.
 The configurable schedules are:
