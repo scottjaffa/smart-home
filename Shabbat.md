@@ -2,8 +2,8 @@
 
 ## About
 
-Shabbat mode is a set of Home Assistant blueprints which reduces the need to run around before Shabbat and Yom Tov adjusting lights and settings by configuring a house at the start/end of Shabbat or Yom Tov and automating actions during Shabbat or Yom Tov.  It is designed to be simple yet flexible.  
-Provides schedules, separate bedroom settings for kids, meal schedules, and food warming.  It controls lights, fans, warming devices.  Later todo are HVAC and other home appliances.  
+Shabbat mode is a set of Home Assistant blueprints which reduces the need to spend time before Shabbat or (Jewish sabbath) and Yom Tov adjusting lights and settings.  It configures a house at the start/end of Shabbat or Yom Tov and automating actions during Shabbat or Yom Tov.  It is designed to be simple yet flexible.  
+Provides schedules, separate bedroom settings for kids, meal schedules, and food warming.  It controls lights, fans, warming devices.  Future features may include HVAC and other home appliance control.  
 It adjusts each week for candlelighting times and automatically runs regardless of day of week (for Yom Tov).
 
 This requires [Home Assistant](https://www.home-assistant.io) and can work with any hardware supported by it.  To see what hardware I've used, see [here](https://github.com/scottjaffa/smart-home/blob/main/equipment.md).
@@ -41,7 +41,7 @@ This requires [Home Assistant](https://www.home-assistant.io) and can work with 
 ## Usage
 
 ### Shabbat Switcher
-Shabbat Switcher sets an input helper for when Shabbat mode is active.
+Shabbat Switcher sets an input helper which is used to define when Shabbat mode is active.
 Set a binary sensor that denotes Shabbat Active, default being Jewish Calendar issur_melacha_in_effect.  
 Set any binary or boolean helper to disable Shabbat mode, such as a helper for 'away'.
 Optionally, set a no later than start time by enabling early Shabbat mode, set that time, and set the sensor which identifies if it is erev Shabbat/Chag.
