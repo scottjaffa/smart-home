@@ -110,7 +110,7 @@ blueprint:
           selector:
             time:       
         dinner_scenes:
-          name: Dinner Start Scenes, Scripts, Automations
+          name: Dinner Start Scenes, Scripts
           description: >
             
           default: []
@@ -118,11 +118,10 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
         dinner_end_scenes:
-          name: Dinner End Scenes, Scripts, Automations
+          name: Dinner End Scenes, Scripts
           description: >
             
           default: []
@@ -130,7 +129,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -153,7 +151,7 @@ blueprint:
           selector:
             time:       
         evening_scenes:
-          name: Evening Scenes, Scripts, Automations
+          name: Evening Scenes, Scripts
           description: >
             
           default: []
@@ -161,7 +159,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -184,7 +181,7 @@ blueprint:
           selector:
             time:     
         night_scenes:
-          name: Night Scenes, Scripts, Automations
+          name: Night Scenes, Scripts
           description: >
             
           default: []
@@ -192,7 +189,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -215,7 +211,7 @@ blueprint:
           selector:
             time:       
         wakeup_scenes:
-          name: Wakeup Scenes, Scripts, Automations
+          name: Wakeup Scenes, Scripts
           description: >
             
           default: []
@@ -223,7 +219,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -246,7 +241,7 @@ blueprint:
           selector:
             time:       
         morning_scenes:
-          name: Morning Scenes, Scripts, Automations
+          name: Morning Scenes, Scripts
           description: >
             
           default: []
@@ -254,7 +249,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -284,7 +278,7 @@ blueprint:
           selector:
             time:   
         lunch_scenes:
-          name: Lunch Start Scenes, Scripts, Automations
+          name: Lunch Start Scenes, Scripts
           description: >
             
           default: []
@@ -292,11 +286,10 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
         lunch_end_scenes:
-          name: Lunch End Scenes, Scripts, Automations
+          name: Lunch End Scenes, Scripts
           description: >
             
           default: []
@@ -304,7 +297,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
                   
@@ -327,7 +319,7 @@ blueprint:
           selector:
             time:       
         afternoon_scenes:
-          name: Afternoon Scenes, Scripts, Automations
+          name: Afternoon Scenes, Scripts
           description: >
             
           default: []
@@ -335,7 +327,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -363,7 +354,7 @@ blueprint:
               step: 5
               unit_of_measurement: minutes
         dusk_scenes:
-          name: Dusk Scenes, Scripts, Automations
+          name: Dusk Scenes, Scripts
           description: >
             
           default: []
@@ -371,7 +362,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
@@ -398,7 +388,7 @@ blueprint:
               step: 5
               unit_of_measurement: minutes
         bedroom_dusk_scenes:
-          name: Bedroom Dusk Scenes, Scripts, Automations
+          name: Bedroom Dusk Scenes, Scripts
           description: >
             
           default: []
@@ -406,7 +396,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
     
@@ -418,7 +407,7 @@ blueprint:
           selector:
             time:       
         bedroom_scenes:
-          name: Bedroom Scenes, Scripts, Automations
+          name: Bedroom Scenes, Scripts
           description: >
             
           default: []
@@ -426,7 +415,6 @@ blueprint:
             entity:
               filter:
                 domain:
-                  - automation
                   - scene
                   - script
 
