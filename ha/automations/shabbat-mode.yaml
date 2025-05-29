@@ -92,6 +92,7 @@ blueprint:
           name: Enable dinner schedule
           description: >
             This setting enables the dinner schedule.
+            
           default: false
           selector:
             boolean:
@@ -105,7 +106,7 @@ blueprint:
         dinner_end_time:
           name: Dinner End Time
           description: >
-
+           End is currently ignored (uses lunch end)
           default: "21:30:00"
           selector:
             time:       
