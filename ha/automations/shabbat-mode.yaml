@@ -556,45 +556,76 @@ blueprint:
 
 variables:
   shabbat_trigger: !input shabbat_trigger
-  
+
+#start   
   start_scenes: !input start_scenes
-  
+  start_scene_entities: "{{ start_scenes | select('match', '^scene\\..*') | list }}"
+  start_script_entities: "{{ start_scenes | select('match', '^script\\..*') | list }}"
+
+#dinner  
   dinner_time: !input dinner_time
   dinner_scenes: !input dinner_scenes
   dinner_end_time: !input dinner_end_time
   dinner_end_scenes: !input dinner_end_scenes
-  
+  dinner_scene_entities: "{{ dinner_scenes | select('match', '^scene\\..*') | list }}"
+  dinner_script_entities: "{{ dinner_scenes | select('match', '^script\\..*') | list }}"
+  dinner_end_entities: "{{ dinner_end_scenes | select('match', '^scene\\..*') | list }}"
+  dinner_end_entities: "{{ dinner_end_scenes | select('match', '^script\\..*') | list }}"
+
+ #evening 
   evening_time: !input evening_time
   evening_scenes: !input evening_scenes
-  
+  evening_scene_entities: "{{ evening_scenes | select('match', '^scene\\..*') | list }}"
+  evening_script_entities: "{{ evening_scenes | select('match', '^script\\..*') | list }}"
+
+ #night 
   night_time: !input night_time
   night_scenes: !input night_scenes
-  
+  night_scene_entities: "{{ night_scenes | select('match', '^scene\\..*') | list }}"
+  night_script_entities: "{{ night_scenes | select('match', '^script\\..*') | list }}"
+
+ #wakeup 
   wakeup_time: !input wakeup_time
   wakeup_scenes: !input wakeup_scenes
-  
+  wakeup_scene_entities: "{{ wakeup_scenes | select('match', '^scene\\..*') | list }}"
+  wakeup_script_entities: "{{ wakeup_scenes | select('match', '^script\\..*') | list }}"
+
+ #morning 
   morning_time: !input morning_time
   morning_scenes: !input morning_scenes
-  
+  morning_scene_entities: "{{ morning_scenes | select('match', '^scene\\..*') | list }}"
+  morning_script_entities: "{{ morning_scenes | select('match', '^script\\..*') | list }}"
+
+ #lunch 
   lunch_time: !input lunch_time
   lunch_scenes: !input lunch_scenes  
   lunch_end_time: !input lunch_end_time
   lunch_end_scenes: !input lunch_end_scenes
-  
+  lunch_scene_entities: "{{ lunch_scenes | select('match', '^scene\\..*') | list }}"
+  lunch_script_entities: "{{ lunch_scenes | select('match', '^script\\..*') | list }}"
+  lunch_end_entities: "{{ lunch_end_scenes | select('match', '^scene\\..*') | list }}"
+  lunch_end_entities: "{{ lunch_end_scenes | select('match', '^script\\..*') | list }}"
+
+ #afternoon 
   afternoon_time: !input afternoon_time
   afternoon_scenes: !input afternoon_scenes
-  
+  afternoon_scene_entities: "{{ afternoon_scenes | select('match', '^scene\\..*') | list }}"
+  afternoon_script_entities: "{{ afternoon_scenes | select('match', '^script\\..*') | list }}"
+
+#dusk
   dusk_offset: !input dusk_offset
   dusk_scenes: !input dusk_scenes
-  
+  dusk_scene_entities: "{{ dusk_scenes | select('match', '^scene\\..*') | list }}"
+  dusk_script_entities: "{{ dusk_scenes | select('match', '^script\\..*') | list }}"
+
+#bedroom
   bedroom_time: !input bedroom_time
   bedroom_scenes: !input bedroom_scenes
-  
+  bedroom_scene_entities: "{{ bedroom_scenes | select('match', '^scene\\..*') | list }}"
+  bedroom_script_entities: "{{ bedroom_scenes | select('match', '^script\\..*') | list }}"
+
+#end
   end_scenes: !input end_scenes
-
-  start_scene_entities: "{{ start_scenes | select('match', '^scene\\..*') | list }}"
-  start_script_entities: "{{ start_scenes | select('match', '^script\\..*') | list }}"
-
   end_scene_entities: "{{ end_scenes | select('match', '^scene\\..*') | list }}"
   end_script_entities: "{{ end_scenes | select('match', '^script\\..*') | list }}"
 
@@ -813,11 +844,16 @@ actions:
                 id:
                   - shabbat_evening
         sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ evening_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input evening_scenes
+              entity_id: "{{ evening_scene_entities }}"
         alias: Trigger - Evening
       - conditions:
           - condition: and
@@ -826,11 +862,16 @@ actions:
                 id:
                   - shabbat_night
         sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ night_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input night_scenes
+              entity_id: "{{ night_scene_entities }}"
         alias: Trigger - Night
       - conditions:
           - condition: and
@@ -839,11 +880,16 @@ actions:
                 id:
                   - shabbat_wakeup
         sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ wakeup_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input wakeup_scenes
+              entity_id: "{{ wakeup_scene_entities }}"
         alias: Trigger - Wakeup
       - conditions:
           - condition: and
@@ -852,11 +898,16 @@ actions:
                 id:
                   - shabbat_morning
         sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ morning_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input morning_scenes
+              entity_id: "{{ morning_scene_entities }}"
         alias: Trigger - Morning
       - conditions:
           - condition: and
@@ -865,11 +916,17 @@ actions:
                 id:
                   - shabbat_lunch
         sequence:
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ lunch_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input lunch_scenes
+              entity_id: "{{ lunch_scene_entities }}"
         alias: Trigger - Lunch
       - conditions:
           - condition: and
@@ -878,11 +935,16 @@ actions:
                 id:
                   - shabbat_afternoon
         sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ afternoon_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input afternoon_scenes
+              entity_id: "{{ afternoon_scene_entities }}"
         alias: Trigger - Afternoon
       - conditions:
           - condition: and
@@ -891,11 +953,16 @@ actions:
                 id:
                   - shabbat_dusk
         sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ dusk_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input dusk_scenes
+              entity_id: "{{ dusk_scene_entities }}"
         alias: Trigger - Dusk
       - conditions:
           - condition: and
@@ -961,11 +1028,17 @@ actions:
             data: {}
             target:
               entity_id: !input warming_devices
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ lunch_end_script_entities }}"
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
-              entity_id: !input lunch_end_scenes
+              entity_id: "{{ lunch_end_scene_entities }}"
         alias: Trigger - Meal End
 
   - if:
@@ -983,12 +1056,17 @@ actions:
               after: !input bedroom_time
           alias: Shabbat starts after kid bedtime  
     then:
-      sequence:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: !input bedroom_scenes
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_scene_entities }}"
     alias: Kid Bedtime
 
   - if:
@@ -1006,12 +1084,17 @@ actions:
               after: !input dinner_time
           alias: Shabbat starts after dinnertime    
     then:
-      sequence:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: !input dinner_scenes
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ dinner_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ dinner_scene_entities }}"
     alias: Dinner
 
 
