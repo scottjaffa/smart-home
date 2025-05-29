@@ -7,6 +7,8 @@ blueprint:
 
 
     Shabbat Mode master automation
+    See [here](https://github.com/scottjaffa/smart-home/blob/main/Shabbat.md) for more detailed documentation
+    Go here for discussion.
 
     Requires the Jewish Calendar integration
 
@@ -52,8 +54,8 @@ blueprint:
         start_scenes:
           name: Start scenes and scripts
           description: >
-            Scenes and scripts to run at the start of shabbat
-            Scripts run before scenes
+            Scenes and scripts to run at the start of Shabbat
+            Scripts are run before scenes
 
           default: []
           selector:
@@ -72,7 +74,7 @@ blueprint:
           name: End scenes and scripts
           description: >
             Scenes and scripts to run at the end of shabbat
-            Scripts run before scenes
+            Scripts are run before scenes
 
 
           default: []
@@ -113,7 +115,8 @@ blueprint:
         dinner_scenes:
           name: Dinner Start Scenes, Scripts
           description: >
-            
+            Scenes and scripts to run at the beginning of dinner
+            Scripts are run before scenes            
           default: []
           selector:
             entity:
@@ -124,7 +127,8 @@ blueprint:
         dinner_end_scenes:
           name: Dinner End Scenes, Scripts
           description: >
-            
+            Scenes and scripts to run at the end of dinner
+            Scripts are run before scenes  
           default: []
           selector:
             entity:
@@ -147,14 +151,15 @@ blueprint:
         evening_time:
           name: Evening Time
           description: >
-
+            The time to run the evening schedule
           default: "22:00:00"
           selector:
             time:       
         evening_scenes:
           name: Evening Scenes, Scripts
           description: >
-            
+            Scenes and scripts to run at the evening schedule
+            Scripts are run before scenes              
           default: []
           selector:
             entity:
