@@ -165,7 +165,6 @@ blueprint:
           default: []
           selector:
             entity:
-              multiple: true
               filter:
                 domain:
                   - scene
