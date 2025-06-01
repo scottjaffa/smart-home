@@ -393,7 +393,7 @@ blueprint:
           selector:
             boolean:  
         bedroom_dusk_offset:
-          name: Bedroom Dusk Setting
+          name: Bedroom Dusk Offset
           description: >
             How early before dusk to run
           default: -75
@@ -403,6 +403,15 @@ blueprint:
               max: 0
               step: 5
               unit_of_measurement: minutes
+
+#        bedroom_dusk_latest_time:
+#          name: Bedroom Evening Time
+#          description: >
+#            The latest time the Dusk/Evening schedule should run
+#          default: "18:00:00"
+#          selector:
+#            time:     
+  
         bedroom_dusk_scenes:
           name: Bedroom Dusk Scenes, Scripts
           description: >
