@@ -20,6 +20,7 @@ This requires [Home Assistant](https://www.home-assistant.io) and can work with 
 * Other appliances
 * Guest mode
 
+## Components
 
   | Component  | Description | 
 | ------------- | ------------- |
