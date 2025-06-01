@@ -10,6 +10,8 @@ Aeotec ZW090
   
 # Switches/Scene Controllers/Remotes
  ## Zwave
+ Zooz devices offer smart bulb mode wherein they don't switch the circuit on or off.  By setting a smart bulb mode the switches can be made to ignore commands.
+ Enbrighten motion sensors have the ability to turn the sensor on and off.
   *  Zooz ZEN71
   *  Zooz ZEN77
   *  Zooz ZEN30
