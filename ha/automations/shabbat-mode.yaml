@@ -392,26 +392,39 @@ blueprint:
           default: false
           selector:
             boolean:  
-        bedroom_dusk_offset:
-          name: Bedroom Dusk Offset
-          description: >
-            How early before dusk to run
-          default: -75
-          selector:
-            number:
-              min: -120
-              max: 0
-              step: 5
-              unit_of_measurement: minutes
-
-#        bedroom_dusk_latest_time:
-#          name: Bedroom Evening Time
+#        bedroom_dusk_offset:
+#          name: Bedroom Dusk Offset
 #          description: >
-#            The latest time the Dusk/Evening schedule should run
-#          default: "18:00:00"
+#            How early before dusk to run
+#          default: -75
 #          selector:
-#            time:     
-  
+#            number:
+#              min: -120
+#              max: 0
+#              step: 5
+#              unit_of_measurement: minutes
+
+        bedroom_evening_time:
+          name: Bedroom Evening Time
+          description: >
+            The time the Evening schedule should run
+          default: "18:00:00"
+          selector:
+            time:     
+
+        bedroom_evening_scenes:
+          name: Bedroom Evening Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
         bedroom_dusk_scenes:
           name: Bedroom Dusk Scenes, Scripts
           description: >
@@ -648,6 +661,8 @@ variables:
 #bedroom
   bedroom_time: !input bedroom_time
   bedroom_scenes: !input bedroom_scenes
+  bedroom_evening_scene_entities: "{{ bedroom_evening_scenes | select('match', '^scene\\..*') | list }}"
+  bedroom_evening_script_entities: "{{ bedroom_evening_scenes | select('match', '^script\\..*') | list }}"
   bedroom_scene_entities: "{{ bedroom_scenes | select('match', '^scene\\..*') | list }}"
   bedroom_script_entities: "{{ bedroom_scenes | select('match', '^script\\..*') | list }}"
 
@@ -707,6 +722,10 @@ triggers:
     trigger: sun
   - at: !input bedroom_time
     id: shabbat_kid_bedtime
+    trigger: time
+    enabled: !input enable_bedroom_schedule
+  - at: !input bedroom_evening_time
+    id: shabbat_kid_evening
     trigger: time
     enabled: !input enable_bedroom_schedule
 
@@ -1068,6 +1087,34 @@ actions:
               entity_id: "{{ lunch_end_scene_entities }}"
         alias: Trigger - Meal End
 
+  - if:
+    - condition: or
+      conditions:
+        - condition: trigger
+          id:
+            - shabbat_kid_evening
+        - condition: and
+          conditions:
+            - condition: trigger
+              id:
+                - shabbat_start
+            - condition: time
+              before: !input bedroom_time
+          alias: Shabbat starts after kid bedtime  
+    then:
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_evening_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_evening_scene_entities }}"
+    alias: Kid Night
+    
   - if:
     - condition: or
       conditions:
