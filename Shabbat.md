@@ -3,10 +3,23 @@
 ## About
 
 Shabbat mode is a set of Home Assistant blueprints which reduces the need to spend time before Shabbat or (Jewish sabbath) and Yom Tov adjusting lights and settings.  It configures a house at the start/end of Shabbat or Yom Tov and automating actions during Shabbat or Yom Tov.  It is designed to be simple yet flexible.  
-Provides schedules, separate bedroom settings for kids, meal schedules, and food warming.  It controls lights, fans, warming devices.  Future features may include HVAC and other home appliance control.  
+
 It adjusts each week for candlelighting times and automatically runs regardless of day of week (for Yom Tov).
 
 This requires [Home Assistant](https://www.home-assistant.io) and can work with any hardware supported by it.  To see what hardware I've used, see [here](https://github.com/scottjaffa/smart-home/blob/main/equipment.md).
+
+## Features
+###Current Features
+* Scheduling 
+* Separate kid bedroom settings
+* Meal schedules
+* Food warming
+
+###Roadmap
+* HVAC
+* Other appliances
+* Guest mode
+
 
 
   | Component  | Description | 
