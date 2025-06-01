@@ -9,13 +9,13 @@ It adjusts each week for candlelighting times and automatically runs regardless 
 This requires [Home Assistant](https://www.home-assistant.io) and can work with any hardware supported by it.  To see what hardware I've used, see [here](https://github.com/scottjaffa/smart-home/blob/main/equipment.md).
 
 ## Features
-###Current Features
+### Current Features
 * Scheduling 
 * Separate kid bedroom settings
 * Meal schedules
 * Food warming
 
-###Roadmap
+### Roadmap
 * HVAC
 * Other appliances
 * Guest mode
