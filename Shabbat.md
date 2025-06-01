@@ -21,7 +21,6 @@ This requires [Home Assistant](https://www.home-assistant.io) and can work with 
 * Guest mode
 
 
-
   | Component  | Description | 
 | ------------- | ------------- |
 | [Jewish Calendar Integration](https://www.home-assistant.io/integrations/jewish_calendar/)  | This provides the sensor that denotes when Shabbat or Yom Tov is active, adjusting for candle lighting times and Yom Tov dates  | 
