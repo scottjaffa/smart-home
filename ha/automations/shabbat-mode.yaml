@@ -425,18 +425,18 @@ blueprint:
                   - scene
                   - script
 
-        bedroom_dusk_scenes:
-          name: Bedroom Dusk Scenes, Scripts
-          description: >
-            
-          default: []
-          selector:
-            entity:
-              multiple: true
-              filter:
-                domain:
-                  - scene
-                  - script
+#        bedroom_dusk_scenes:
+#          name: Bedroom Dusk Scenes, Scripts
+#          description: >
+#            
+#          default: []
+#          selector:
+#            entity:
+#              multiple: true
+#              filter:
+#                domain:
+#                  - scene
+#                  - script
     
         bedroom_time:
           name: Bedroom Time
