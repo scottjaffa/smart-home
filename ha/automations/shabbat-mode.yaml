@@ -643,8 +643,8 @@ variables:
   lunch_end_scenes: !input lunch_end_scenes
   lunch_scene_entities: "{{ lunch_scenes | select('match', '^scene\\..*') | list }}"
   lunch_script_entities: "{{ lunch_scenes | select('match', '^script\\..*') | list }}"
-  lunch_end_entities: "{{ lunch_end_scenes | select('match', '^scene\\..*') | list }}"
-  lunch_end_entities: "{{ lunch_end_scenes | select('match', '^script\\..*') | list }}"
+  lunch_end_scene_entities: "{{ lunch_end_scenes | select('match', '^scene\\..*') | list }}"
+  lunch_end_script_entities: "{{ lunch_end_scenes | select('match', '^script\\..*') | list }}"
 
  #afternoon 
   afternoon_time: !input afternoon_time
