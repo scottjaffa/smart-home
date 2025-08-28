@@ -47,6 +47,7 @@ blueprint:
               - input_boolean
           multiple: false
 
+
     shabbat_disable:
       name: Disable Shabbat Mode (Optional)
       description: >
@@ -54,11 +55,11 @@ blueprint:
       default: input_boolean.away
       selector:
         entity:
-          filter:
-            domain:
-              - input_boolean
-              - binary_sensor
           multiple: true
+          filter:
+            -  domain:
+                - input_boolean
+                - binary_sensor
 
 
     enable_early_shabbat:
