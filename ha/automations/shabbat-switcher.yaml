@@ -50,7 +50,8 @@ blueprint:
       name: Disable Shabbat Mode (Optional)
       description: >
         Entities which prevent the Shabbat mode from activating
-      default: input_boolean.away
+      default: 
+        - input_boolean.away
       selector:
         entity:
           filter:
