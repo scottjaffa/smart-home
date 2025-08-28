@@ -49,9 +49,10 @@ This requires [Home Assistant](https://www.home-assistant.io) and can work with 
 
 
 ## Detailed Installation
-
+Work in progress
 
 ## Usage
+Work in progress
 
 ### Shabbat Switcher
 Shabbat Switcher is an automation which is used to define when Shabbat mode is active.
