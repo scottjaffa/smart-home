@@ -49,7 +49,7 @@ blueprint:
     shabbat_disable:
       name: Disable Shabbat Mode (Optional)
       description: >
-        Any of these evaluating to true prevent the house from going into Shabbat mode
+        Any of these evaluating to true prevent the house from going into Shabbat mode.
       default: input_boolean.away
       selector:
         entity:
