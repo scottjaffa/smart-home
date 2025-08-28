@@ -46,6 +46,7 @@ blueprint:
             domain:
               - input_boolean
           multiple: false
+
     shabbat_disable:
       name: Disable Shabbat Mode (Optional)
       description: >
@@ -58,6 +59,8 @@ blueprint:
               - input_boolean
               - binary_sensor
           multiple: true
+
+
     enable_early_shabbat:
       name: Early Shabbat Mode (Optional)
       description: >
