@@ -47,16 +47,17 @@ blueprint:
               - input_boolean
           multiple: false
     shabbat_disable:
-      name: Shabbat Status
+      name: Disable Shabbat Mode (Optional)
       description: >
-        The internal variable used to denote Shabbat mode for the house
-      default: input_boolean.shabbat_active
+        Any of these evaluating to true prevent the house from going into Shabbat mode
+      default: input_boolean.away
       selector:
         entity:
           filter:
             domain:
               - input_boolean
-          multiple: false
+              - binary_sensor
+          multiple: true
     enable_early_shabbat:
       name: Early Shabbat Mode (Optional)
       description: >
