@@ -28,9 +28,9 @@ This requires [Home Assistant](https://www.home-assistant.io) and can work with 
 | [Shabbat Switcher Blueprint](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-switcher.yaml) | This provides the logic for when to switch the house into Shabbat mode, including home/away and early Shabbat/Yom Tov |
 |  "Shabbat Active" [input boolean helper](https://www.home-assistant.io/integrations/input_boolean/)  | This denotes when the house is in Shabbat mode and controls the activation of the main switch  |
 | [Shabbat Mode Blueprint](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-mode.yaml) | This provides the automations controlling the house while active |
-| Shabbat Start Script | An example script that runs at the start of Shabbat mode |
-| Shabbat End Script | An example script that runs at the end of Shabbat mode |
-| Device Enforcement Blueprint | An automation that will turn a device back on if it is turned off |
+| [Shabbat Start Script](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat_start.yaml) | An example script that runs at the start of Shabbat mode |
+| [Shabbat End Script](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat_end.yaml) | An example script that runs at the end of Shabbat mode |
+| [Light Protection Automation](https://github.com/scottjaffa/smart-home/blob/main/ha/automations/lights_on.yaml) | An automation that will turn a device back on if it is turned off |
 
 
   ## Quick Installation
