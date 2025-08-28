@@ -1,0 +1,279 @@
+sequence:
+  - device_id: a1b909f83156ae14477036fdca3da9c3
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 1
+    bitmask: null
+    subtype: 1 (Timeout Duration) on endpoint 0
+    value: 255
+  - device_id: a1b909f83156ae14477036fdca3da9c3
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 3
+    bitmask: null
+    subtype: 3 (Operation Mode) on endpoint 0
+    value: 1
+  - device_id: a1b909f83156ae14477036fdca3da9c3
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: a388c0ebe34cc74b44003991cc667600
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 1
+    bitmask: null
+    subtype: 1 (Timeout Duration) on endpoint 0
+    value: 255
+  - device_id: a388c0ebe34cc74b44003991cc667600
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 3
+    bitmask: null
+    subtype: 3 (Operation Mode) on endpoint 0
+    value: 1
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - device_id: a388c0ebe34cc74b44003991cc667600
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 25df1c5de6caf65ea36aeadd52024048
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 90643240aab2e901d8688d79ec44012c
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 77127c5e1a15d5c2b5e7ced7d3e7d83f
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 6d4099d48bfd3676c1cd20b1e5599cb0
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 1
+    bitmask: null
+    subtype: 1 (Timeout Duration) on endpoint 0
+    value: 255
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - device_id: 6d4099d48bfd3676c1cd20b1e5599cb0
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 5600214dc615b3458b4f99e68c84674a
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 1
+    bitmask: null
+    subtype: 1 (Timeout Duration) on endpoint 0
+    value: 255
+  - device_id: 5600214dc615b3458b4f99e68c84674a
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 3
+    bitmask: null
+    subtype: 3 (Operation Mode) on endpoint 0
+    value: 1
+  - device_id: 98cc9f2b54ce610a70767afe4436db54
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 9c3ddef9982478186f1b047c3ec67269
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - device_id: e2dcdbc79adb401b4cc4e643697d3734
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 531c233931d74f4a5aaeb2b6cbc2a2e9
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 1
+    bitmask: null
+    subtype: 1 (Timeout Duration) on endpoint 0
+    value: 255
+  - device_id: 531c233931d74f4a5aaeb2b6cbc2a2e9
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 3
+    bitmask: null
+    subtype: 3 (Operation Mode) on endpoint 0
+    value: 1
+  - device_id: 531c233931d74f4a5aaeb2b6cbc2a2e9
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 5600214dc615b3458b4f99e68c84674a
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - device_id: 85fcce4fc525b1fb5d962e64d25b6647
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 5
+    bitmask: null
+    subtype: 5 (Load Control Mode) on endpoint 0
+    value: 0
+  - device_id: 85fcce4fc525b1fb5d962e64d25b6647
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Load Control Sensor Mode) on endpoint 0
+    value: 1
+  - device_id: c0f48a6c259bd2dfae6e0b4b15399173
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - device_id: 90a9fbe3f7ff1e4d567e73263831e3ef
+    domain: zwave_js
+    type: set_config_parameter
+    endpoint: 0
+    parameter: 6
+    bitmask: null
+    subtype: 6 (Motion Sensor) on endpoint 0
+    value: 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+    enabled: false
+  - target:
+      entity_id: scene.0_shabbat_start
+    metadata: {}
+    action: scene.turn_on
+    data: {}
+    enabled: false
+  - type: turn_off
+    device_id: bf8c66d24edafd9503c7a4b4e8f46d34
+    entity_id: 4b80c16ee00fec37c96264b34e8c89a1
+    domain: switch
+    continue_on_error: true
+  - target:
+      entity_id: binary_sensor.foyer_motion
+    data: {}
+    enabled: false
+    action: timer.cancel
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 15
+      milliseconds: 0
+    enabled: false
+  - metadata: {}
+    target:
+      entity_id: scene.0_shabbat_start
+    action: scene.turn_on
+    data: {}
+    enabled: false
+  - if:
+      - condition: time
+        after: input_datetime.kid_bedtime
+    then:
+      - metadata: {}
+        target:
+          entity_id: scene.yellow_room_red_nightlight
+        action: scene.turn_on
+        data: {}
+    enabled: false
+  - if:
+      - condition: numeric_state
+        entity_id: sensor.meat_dishwasher_power_electric_consumption_w_2
+        below: 5
+    then:
+      - type: turn_off
+        device_id: b915dcc843e8c927e599544f93ed2c5d
+        entity_id: c9c8c81ec25ab83449f886613d1eea35
+        domain: switch
+    alias: Meat DW Off
+  - alias: Dairy DW Off
+    if:
+      - condition: numeric_state
+        entity_id: sensor.dairy_dishwasher_power_electric_consumption_w_2
+        below: 5
+    then:
+      - type: turn_off
+        device_id: 981cf844839213b8be258888a5beff21
+        entity_id: 1b80d96b47eac3b87b43a9bdbf1996d8
+        domain: switch
+alias: Shabbat Start
+description: ""
