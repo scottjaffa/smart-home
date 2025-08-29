@@ -1,0 +1,164 @@
+blueprint:
+  name: Shabbat Switcher
+  description: >
+    # 🕎 Shabbat Switcher
+
+    **Version: .1**
+
+    Automation that evaluates conditions and switches HA to Shabbat Mode
+
+    **Prerequisites**
+    
+    The Jewish Calendar HA Integration:  https://www.home-assistant.io/integrations/jewish_calendar/
+    
+    An input boolean to set Shabbat Mode for the house - default is input_boolean.shabbat_active
+    
+    **Recommended**
+    
+    An input boolean for away mode - default is input_boolean.away
+
+
+
+    Welcome to reach out for questions.
+
+
+  domain: automation
+  input:
+    shabbat_trigger:
+      name: Shabbat/Yom Tov Sensor
+      description: >
+        The sensor which activates this automation, generally from Jewish Calendar
+      default: binary_sensor.jewish_calendar_issur_melacha_in_effect
+      selector:
+        entity:
+          filter:
+            domain:
+              - binary_sensor
+          multiple: false
+    shabbat_status:
+      name: Shabbat Status
+      description: >
+        The internal variable used to denote Shabbat mode for the house
+      default: input_boolean.shabbat_active
+      selector:
+        entity:
+          filter:
+            domain:
+              - input_boolean
+          multiple: false
+    shabbat_disable:
+      name: Disable Shabbat Mode (Optional)
+      description: >
+        Entities which prevent the Shabbat mode from activating
+      default: 
+        - input_boolean.away
+      selector:
+        entity:
+          filter:
+            domain:
+              - input_boolean
+              - binary_sensor
+          multiple: true
+    enable_early_shabbat:
+      name: Early Shabbat Mode (Optional)
+      description: >
+        This setting turns on Shabbat mode before candle lighting time.
+      default: early_shabbat_disabled
+      selector:
+        select:
+          options:
+            - label: Enable early Shabbat
+              value: "early_shabbat_enabled"
+            - label: Disable early Shabbat
+              value: "early_shabbat_disabled"      
+    early_start_time:
+      name: Early Start Time (Optional)
+      description: >
+        This is the latest time the house will go into Shabbat mode even if not yet candle lighting
+        
+        **Must be set if early Shabbat mode is enabled**
+      default: "19:30:00"
+      selector:
+        time:
+    erev_sensor:
+      name: Sensor which identifies if it is erev shabbat (Optional)
+      description: >
+        The sensor which activates this automation, generally from Jewish Calendar 
+        
+        **Must be set if early Shabbat mode is enabled.**
+      default: binary_sensor.jewish_calendar_erev_shabbat_hag
+      selector:
+        entity:
+          filter:
+            domain:
+              - binary_sensor
+          multiple: false
+            
+
+mode: single
+
+variables:
+  shabbat_trigger: !input shabbat_trigger
+  shabbat_status: !input shabbat_status
+  shabbat_disable: !input shabbat_disable
+  enable_early_shabbat: !input enable_early_shabbat
+  early_start_time: !input early_start_time
+  erev_sensor: !input erev_sensor
+  
+
+
+triggers:
+  - trigger: state
+    entity_id: !input shabbat_trigger
+    to: "on"
+    from: "off"
+    id: shabbat_on
+  - trigger: state
+    entity_id: !input shabbat_trigger
+    from: "on"
+    to: "off"
+    id: shabbat_off
+  - trigger: time
+    at: !input early_start_time
+    id: early_shabbat_on
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: or
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_on
+                  - condition: and
+                    conditions:
+                      - condition: trigger
+                        id:
+                          - early_shabbat_on
+                      - "{{ enable_early_shabbat == 'early_shabbat_enabled' }}"   
+                      - condition: state
+                        entity_id: binary_sensor.jewish_calendar_erev_shabbat_hag
+                        state: "on"
+              - condition: state
+                entity_id: !input shabbat_disable
+                state: "off"
+                match: any
+        sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input shabbat_status
+      - conditions:
+          - condition: trigger
+            id:
+              - shabbat_off
+        sequence:
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input shabbat_status
+    default: []  

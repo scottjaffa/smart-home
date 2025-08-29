@@ -1,0 +1,34 @@
+alias: Shabbat switcher
+description: Sets the house to Shabbat mode
+mode: single
+triggers:
+  - entity_id:
+      - binary_sensor.jewish_calendar_issur_melacha_in_effect
+    to: null
+    trigger: state
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.to_state.state == 'on'}}"
+          - condition: state
+            entity_id: input_boolean.away
+            state: "off"
+        sequence:
+          - target:
+              entity_id: input_boolean.shabbat_active
+            data: {}
+            action: input_boolean.turn_on
+      - conditions:
+          - condition: template
+            value_template: "{{trigger.to_state.state == 'off'}}"
+          - condition: state
+            entity_id: input_boolean.shabbat_active
+            state: "on"
+        sequence:
+          - target:
+              entity_id: input_boolean.shabbat_active
+            data: {}
+            action: input_boolean.turn_off
+    default: []

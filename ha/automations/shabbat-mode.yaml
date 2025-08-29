@@ -1,0 +1,1171 @@
+blueprint:
+  name: Shabbat Mode
+  description: >
+    # 🕎 Shabbat Mode
+
+    **Version: .1**
+
+
+    Shabbat Mode master automation
+    See [here](https://github.com/scottjaffa/smart-home/blob/main/Shabbat.md) for more detailed documentation
+    Go here for discussion.
+
+    Requires the Jewish Calendar integration
+
+    <details>
+      - Add description here
+    </details>
+
+
+    Welcome to reach out for questions.
+
+
+  domain: automation
+  input:
+    trigger:
+      name: "Shabbat Trigger *"
+      icon: mdi:cog-outline
+      input:
+        shabbat_trigger:
+          name: Trigger Sensor
+          description: >
+            The sensor which indicates we are in Shabbat Mode
+            
+            See Shabbat Switcher companion blueprint for advanced settings for enabling Shabbat Mode
+            
+            https://github.com/scottjaffa/smart-home/blob/main/ha/automations/shabbat-switcher.yaml
+          default: input_boolean.shabbat_active
+          selector:
+            entity:
+              filter:
+                domain:
+                  - input_boolean
+
+
+
+    start:
+      name: "Start"
+      icon: mdi:lightbulb-on-outline
+      input:
+        start_scenes:
+          name: Start scenes and scripts
+          description: >
+            Scenes and scripts to run at the start of Shabbat
+            Scripts are run before scenes
+
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    end:
+      name: "End"
+      icon: mdi:lightbulb-on-outline
+      input:
+        end_scenes:
+          name: End scenes and scripts
+          description: >
+            Scenes and scripts to run at the end of shabbat
+            Scripts are run before scenes
+
+
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    dinner:
+      name: "Dinner Schedule"
+      icon: mdi:sun-clock-outline
+      input:
+        enable_dinner_schedule:
+          name: Enable dinner schedule
+          description: >
+            This setting enables the dinner schedule.
+            
+          default: false
+          selector:
+            boolean:
+        dinner_time:
+          name: Dinner Time
+          description: >
+
+          default: "19:30:00"
+          selector:
+            time:       
+        dinner_end_time:
+          name: Dinner End Time
+          description: >
+           End is currently ignored (uses lunch end)
+          default: "21:30:00"
+          selector:
+            time:       
+        dinner_scenes:
+          name: Dinner Start Scenes, Scripts
+          description: >
+            Scenes and scripts to run at the beginning of dinner
+            Scripts are run before scenes            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+        dinner_end_scenes:
+          name: Dinner End Scenes, Scripts
+          description: >
+            Scenes and scripts to run at the end of dinner
+            Scripts are run before scenes  
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    evening:
+      name: "Evening Schedule"
+      icon: mdi:sun-clock-outline
+      input:                          
+        enable_evening_schedule:
+          name: Enable evening schedule
+          description: >
+            This setting enables the evening schedule.
+          default: false
+          selector:
+            boolean:                   
+        evening_time:
+          name: Evening Time
+          description: >
+            The time to run the evening schedule
+          default: "22:00:00"
+          selector:
+            time:       
+        evening_scenes:
+          name: Evening Scenes, Scripts
+          description: >
+            Scenes and scripts to run at the evening schedule
+            Scripts are run before scenes              
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    night:
+      name: "Night Schedule"
+      icon: mdi:sun-clock-outline
+      input:
+        enable_night_schedule:
+          name: Enable night schedule
+          description: >
+            This setting enables the night schedule.
+          default: false
+          selector:
+            boolean:            
+        night_time:
+          name: Night Time
+          description: >
+
+          default: "00:10:00"
+          selector:
+            time:     
+        night_scenes:
+          name: Night Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    wakeup:
+      name: "Wakeup Schedule"
+      icon: mdi:sun-clock-outline
+      input:
+        enable_wakeup_schedule:
+          name: Enable wakeup schedule
+          description: >
+            This setting enables the wakeup schedule.
+          default: false
+          selector:
+            boolean:                    
+        wakeup_time:
+          name: Wakeup Time
+          description: >
+
+          default: "6:30:00"
+          selector:
+            time:       
+        wakeup_scenes:
+          name: Wakeup Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    morning:
+      name: "Morning Schedule"
+      icon: mdi:sun-clock-outline
+      input:          
+        enable_morning_schedule:
+          name: Enable morning schedule
+          description: >
+            This setting enables the morning schedule.
+          default: false
+          selector:
+            boolean:                  
+        morning_time:
+          name: Morning Time
+          description: >
+
+          default: "9:00:00"
+          selector:
+            time:       
+        morning_scenes:
+          name: Morning Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    lunch:
+      name: "Lunch Schedule"
+      icon: mdi:sun-clock-outline
+      input:
+        enable_lunch_schedule:
+          name: Enable lunch schedule
+          description: >
+            This setting enables the lunch schedule.
+          default: false
+          selector:
+            boolean:                    
+        lunch_time:
+          name: Lunch Time
+          description: >
+
+          default: "12:30:00"
+          selector:
+            time:     
+        lunch_end_time:
+          name: Lunch EndTime
+          description: >
+
+          default: "16:00:00"
+          selector:
+            time:   
+        lunch_scenes:
+          name: Lunch Start Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+        lunch_end_scenes:
+          name: Lunch End Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+                  
+    afternoon:
+      name: "Afternoon Schedule"
+      icon: mdi:sun-clock-outline
+      input:
+        enable_afternoon_schedule:
+          name: Enable afternoon schedule
+          description: >
+            This setting enables the afternoon schedule.
+          default: false
+          selector:
+            boolean:                    
+        afternoon_time:
+          name: Afternoon Time
+          description: >
+
+          default: "14:30:00"
+          selector:
+            time:       
+        afternoon_scenes:
+          name: Afternoon Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    dusk:
+      name: "Dusk Schedule"
+      icon: mdi:sun-clock-outline
+      input:
+        enable_dusk_schedule:
+          name: Enable dusk schedule
+          description: >
+            This setting enables the dusk schedule.
+            **Warning** If you use the bedroom settings below, do not put the bedroom in dusk as in the summer dusk may run after bedroom settings, overriding them.  Use the bedroom dusk setting instead for those rooms.
+          default: false
+          selector:
+            boolean:                   
+        dusk_offset:
+          name: Dusk Offset Time
+          description: >
+
+          default: -75
+          selector:
+            number:
+              min: -120
+              max: 0
+              step: 5
+              unit_of_measurement: minutes
+        dusk_scenes:
+          name: Dusk Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+    bedroom:
+      name: "Bedroom Schedule"
+      icon: mdi:sun-clock-outline
+      input:
+        enable_bedroom_schedule:
+          name: Enable bedroom schedule
+          description: >
+            This setting enables the bedroom schedule.
+          default: false
+          selector:
+            boolean:  
+#        bedroom_dusk_offset:
+#          name: Bedroom Dusk Offset
+#          description: >
+#            How early before dusk to run
+#          default: -75
+#          selector:
+#            number:
+#              min: -120
+#              max: 0
+#              step: 5
+#              unit_of_measurement: minutes
+
+        bedroom_evening_time:
+          name: Bedroom Evening Time
+          description: >
+            The time the Evening schedule should run
+          default: "18:00:00"
+          selector:
+            time:     
+
+        bedroom_evening_scenes:
+          name: Bedroom Evening Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+#        bedroom_dusk_scenes:
+#          name: Bedroom Dusk Scenes, Scripts
+#          description: >
+#            
+#          default: []
+#          selector:
+#            entity:
+#              multiple: true
+#              filter:
+#                domain:
+#                  - scene
+#                  - script
+    
+        bedroom_time:
+          name: Bedroom Time
+          description: >
+
+          default: "19:00:00"
+          selector:
+            time:       
+        bedroom_scenes:
+          name: Bedroom Scenes, Scripts
+          description: >
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - scene
+                  - script
+
+     
+    food_heating_settings:
+      name: "Food Heating Settings"
+      icon: mdi:heat-wave
+      input:
+        enable_warming:
+          name: Enable warming devices
+          description: >
+            This setting enables the warming devices.
+            They will turn off at the end of the meal schedule set above.  
+          default: false
+          selector:
+            boolean: 
+        warming_devices:
+          name: Warming Devices
+          description: >
+            Devices to turn on for meal warming
+            
+          default: []
+          selector:
+            entity:
+              multiple: true
+              filter:
+                domain:
+                  - switch
+                  
+        dinner_warming:
+          name: Dinner Warming Device Activation
+          description: >
+
+          default: "19:00:00"
+          selector:
+            time:     
+            
+        lunch_warming:
+          name: Lunch Warming Device Activation
+          description: >
+
+          default: "11:00:00"
+          selector:
+            time:   
+        
+        third_meal_warming:
+          name: Third Meal Warming Device Activation
+          description: >
+
+          default: "17:00:00"
+          selector:
+            time:   
+             
+#    device_settings:
+#      name: "Device Settings"
+#      icon: mdi:light-switch-off
+#      collapsed: true
+      
+#    guests:
+#      name: "Guest Settings"
+#      icon: mdi:account-plus
+#      collapsed: true
+#      input:
+#        enable_guest_settings:
+#          name: Enable guest settings
+#          description: >
+#            This setting enables schedule modifiers when having guests.
+#          default: false
+#          selector:
+#            boolean:   
+      
+#        dinner_guest_sensor:
+#          name: Dinner Guest Helper
+#          description: >
+#            A toggle boolean for when having dinner guests
+#          default: input_boolean.dinner_guests
+#          selector:
+#            entity:
+#              filter:
+#                domain:
+#                  - input_boolean
+#        lunch_guest_sensor:
+#          name: Lunch Guest Helper
+#          description: >
+#            A toggle boolean for when having lunch guests
+#          default: input_boolean.lunch_guests
+#          selector:
+#            entity:
+#              filter:
+#                domain:
+#                  - input_boolean
+#        sleeping_guest_sensor:
+#          name: Sleeping Guest Helper
+#          description: >
+#            A toggle boolean for when having sleeping guests
+#          default: input_boolean.sleeping_guests
+#          selector:
+#            entity:
+#              filter:
+#                domain:
+#                  - input_boolean
+
+#        guest_meal_extension:
+#          name: Guest Meal Extension
+#          description: >
+#            How much time to extend the meal schedule when having gusets
+
+#          default: 60
+#          selector:
+#            number:
+#              min: 0
+#              max: 120
+#              step: 5
+#              unit_of_measurement: minutes
+                 
+
+
+
+      
+#    Bathroom_settings:
+#      name: "Bathroom"
+#      icon: mdi:light-switch-off
+#      collapsed: true
+
+#    vacuum_settings:
+#      name: "Vacuum"
+#      icon: mdi:light-switch-off
+#      collapsed: true
+             
+#    lighting_settings:
+#      name: "Lighting"
+#      icon: mdi:light-switch-off
+#      collapsed: true
+
+#    other_settings:
+#      name: "Other"
+#      icon: mdi:light-switch-off
+#      collapsed: true
+
+variables:
+  shabbat_trigger: !input shabbat_trigger
+
+#start   
+  start_scenes: !input start_scenes
+  start_scene_entities: "{{ start_scenes | select('match', '^scene\\..*') | list }}"
+  start_script_entities: "{{ start_scenes | select('match', '^script\\..*') | list }}"
+
+#dinner  
+  dinner_time: !input dinner_time
+  dinner_scenes: !input dinner_scenes
+  dinner_end_time: !input dinner_end_time
+  dinner_end_scenes: !input dinner_end_scenes
+  dinner_scene_entities: "{{ dinner_scenes | select('match', '^scene\\..*') | list }}"
+  dinner_script_entities: "{{ dinner_scenes | select('match', '^script\\..*') | list }}"
+  dinner_end_entities: "{{ dinner_end_scenes | select('match', '^scene\\..*') | list }}"
+  dinner_end_entities: "{{ dinner_end_scenes | select('match', '^script\\..*') | list }}"
+
+ #evening 
+  evening_time: !input evening_time
+  evening_scenes: !input evening_scenes
+  evening_scene_entities: "{{ evening_scenes | select('match', '^scene\\..*') | list }}"
+  evening_script_entities: "{{ evening_scenes | select('match', '^script\\..*') | list }}"
+
+ #night 
+  night_time: !input night_time
+  night_scenes: !input night_scenes
+  night_scene_entities: "{{ night_scenes | select('match', '^scene\\..*') | list }}"
+  night_script_entities: "{{ night_scenes | select('match', '^script\\..*') | list }}"
+
+ #wakeup 
+  wakeup_time: !input wakeup_time
+  wakeup_scenes: !input wakeup_scenes
+  wakeup_scene_entities: "{{ wakeup_scenes | select('match', '^scene\\..*') | list }}"
+  wakeup_script_entities: "{{ wakeup_scenes | select('match', '^script\\..*') | list }}"
+
+ #morning 
+  morning_time: !input morning_time
+  morning_scenes: !input morning_scenes
+  morning_scene_entities: "{{ morning_scenes | select('match', '^scene\\..*') | list }}"
+  morning_script_entities: "{{ morning_scenes | select('match', '^script\\..*') | list }}"
+
+ #lunch 
+  lunch_time: !input lunch_time
+  lunch_scenes: !input lunch_scenes  
+  lunch_end_time: !input lunch_end_time
+  lunch_end_scenes: !input lunch_end_scenes
+  lunch_scene_entities: "{{ lunch_scenes | select('match', '^scene\\..*') | list }}"
+  lunch_script_entities: "{{ lunch_scenes | select('match', '^script\\..*') | list }}"
+  lunch_end_scene_entities: "{{ lunch_end_scenes | select('match', '^scene\\..*') | list }}"
+  lunch_end_script_entities: "{{ lunch_end_scenes | select('match', '^script\\..*') | list }}"
+
+ #afternoon 
+  afternoon_time: !input afternoon_time
+  afternoon_scenes: !input afternoon_scenes
+  afternoon_scene_entities: "{{ afternoon_scenes | select('match', '^scene\\..*') | list }}"
+  afternoon_script_entities: "{{ afternoon_scenes | select('match', '^script\\..*') | list }}"
+
+#dusk
+  dusk_offset: !input dusk_offset
+  dusk_scenes: !input dusk_scenes
+  dusk_scene_entities: "{{ dusk_scenes | select('match', '^scene\\..*') | list }}"
+  dusk_script_entities: "{{ dusk_scenes | select('match', '^script\\..*') | list }}"
+
+#bedroom
+  bedroom_time: !input bedroom_time
+  bedroom_scenes: !input bedroom_scenes
+  bedroom_evening_scene_entities: "{{ bedroom_evening_scenes | select('match', '^scene\\..*') | list }}"
+  bedroom_evening_script_entities: "{{ bedroom_evening_scenes | select('match', '^script\\..*') | list }}"
+  bedroom_scene_entities: "{{ bedroom_scenes | select('match', '^scene\\..*') | list }}"
+  bedroom_script_entities: "{{ bedroom_scenes | select('match', '^script\\..*') | list }}"
+
+#end
+  end_scenes: !input end_scenes
+  end_scene_entities: "{{ end_scenes | select('match', '^scene\\..*') | list }}"
+  end_script_entities: "{{ end_scenes | select('match', '^script\\..*') | list }}"
+
+  warming_devices: !input warming_devices
+
+triggers:
+  - trigger: state
+    entity_id:
+      - !input shabbat_trigger
+    from: "off"
+    to: "on"
+    id: shabbat_start
+  - at: !input dinner_time
+    id: shabbat_dinner
+    trigger: time
+    enabled: !input enable_dinner_schedule
+  - at: !input dinner_end_time
+    id: shabbat_dinner_end
+    trigger: time
+    enabled: !input enable_dinner_schedule
+  - at: !input evening_time
+    id: shabbat_evening
+    trigger: time
+    enabled: !input enable_evening_schedule
+  - at: !input night_time
+    id: shabbat_night
+    trigger: time
+    enabled: !input enable_night_schedule
+  - at: !input wakeup_time
+    id: shabbat_wakeup
+    trigger: time
+    enabled: !input enable_wakeup_schedule
+  - at: !input morning_time
+    id: shabbat_morning
+    trigger: time
+    enabled: !input enable_morning_schedule
+  - at: !input lunch_time
+    id: shabbat_lunch
+    trigger: time
+    enabled: !input enable_lunch_schedule
+  - at: !input lunch_end_time
+    id: shabbat_lunch_end
+    trigger: time
+    enabled: !input enable_lunch_schedule
+  - at: !input afternoon_time
+    id: shabbat_afternoon
+    trigger: time
+    enabled: !input enable_afternoon_schedule
+  - event: sunset
+    offset: !input dusk_offset
+    id: shabbat_dusk
+    trigger: sun
+  - at: !input bedroom_time
+    id: shabbat_kid_bedtime
+    trigger: time
+    enabled: !input enable_bedroom_schedule
+  - at: !input bedroom_evening_time
+    id: shabbat_kid_evening
+    trigger: time
+    enabled: !input enable_bedroom_schedule
+
+  - at: !input dinner_warming
+    id: dinner_warming
+    trigger: time
+    enabled: !input enable_warming
+
+  - at: !input lunch_warming
+    id: lunch_warming
+    trigger: time
+    enabled: !input enable_warming
+
+#  - at: !input third_meal_warming
+#    id: third_meal_warming
+#    trigger: time
+#    enabled: !input enable_warming
+    
+  - trigger: state
+    entity_id:
+      - !input shabbat_trigger
+    from: "on"
+    to: "off"
+    id: shabbat_end
+
+
+conditions:
+  - condition: or
+    conditions:
+      - alias: Shabbat Active Path
+        condition: and
+        conditions:
+          - condition: state
+            entity_id: !input shabbat_trigger
+            state: "on"
+          - condition: or
+            conditions:
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_start
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_dinner
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_dinner_end
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_evening
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_night
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_wakeup
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_morning
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_lunch
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_lunch_end
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_afternoon
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_dusk
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - shabbat_kid_bedtime
+                      
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - dinner_warming
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - lunch_warming
+              - condition: and
+                conditions:
+                  - condition: trigger
+                    id:
+                      - third_meal_warming
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: !input shabbat_trigger
+            state: "off"
+          - condition: trigger
+            id:
+              - shabbat_end
+        alias: Shabbat Inactive Path
+
+actions:
+  - choose:
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_start
+            alias: Trigger - Start
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ start_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ start_scene_entities }}"
+#          - if:
+#              - condition: state
+#                entity_id: input_boolean.shabbat_lunch_guests
+#                state: "on"
+#            then:
+#              - action: input_datetime.set_datetime
+#                metadata: {}
+#                data:
+#                  time: >-
+#                    {{ (states('input_datetime.lunch_end_time_dev') | today_at +
+#                    timedelta(minutes=states('input_number.lunch_guest_modifier')
+#                    | int(0))).time() }}
+#                  entity_id: input_datetime.lunch_end_time_dev
+
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_evening
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ evening_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ evening_scene_entities }}"
+        alias: Trigger - Evening
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_night
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ night_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ night_scene_entities }}"
+        alias: Trigger - Night
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_wakeup
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ wakeup_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ wakeup_scene_entities }}"
+        alias: Trigger - Wakeup
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_morning
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ morning_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ morning_scene_entities }}"
+        alias: Trigger - Morning
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_lunch
+        sequence:
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ lunch_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ lunch_scene_entities }}"
+        alias: Trigger - Lunch
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_afternoon
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ afternoon_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ afternoon_scene_entities }}"
+        alias: Trigger - Afternoon
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_dusk
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ dusk_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ dusk_scene_entities }}"
+        alias: Trigger - Dusk
+      - conditions:
+          - condition: and
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_end
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ end_script_entities }}"
+          
+          - action: switch.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input warming_devices
+              
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ end_scene_entities }}"
+        alias: Trigger - End
+        
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: trigger
+                id:
+                  - dinner_warming
+              - condition: trigger
+                id:
+                  - lunch_warming
+              - condition: trigger
+                id:
+                  - third_meal_warming
+        sequence:
+          - action: switch.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input warming_devices
+        alias: Trigger - Meal Warm
+        
+      - conditions:
+          - condition: or
+            conditions:
+              - condition: trigger
+                id:
+                  - shabbat_dinner_end
+              - condition: trigger
+                id:
+                  - shabbat_lunch_end
+              - condition: trigger
+                id:
+                  - shabbat_third_meal_end
+        sequence:
+          - action: switch.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: !input warming_devices
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ lunch_end_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ lunch_end_scene_entities }}"
+        alias: Trigger - Meal End
+
+  - if:
+    - condition: or
+      conditions:
+        - condition: trigger
+          id:
+            - shabbat_kid_evening
+        - condition: and
+          conditions:
+            - condition: trigger
+              id:
+                - shabbat_start
+            - condition: time
+              before: !input bedroom_time
+          alias: Shabbat starts after kid bedtime  
+    then:
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_evening_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_evening_scene_entities }}"
+    alias: Kid Night
+    
+  - if:
+    - condition: or
+      conditions:
+        - condition: trigger
+          id:
+            - shabbat_kid_bedtime
+        - condition: and
+          conditions:
+            - condition: trigger
+              id:
+                - shabbat_start
+            - condition: time
+              after: !input bedroom_time
+          alias: Shabbat starts after kid bedtime  
+    then:
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ bedroom_scene_entities }}"
+    alias: Kid Bedtime
+
+  - if:
+    - condition: or
+      conditions:
+        - condition: trigger
+          id:
+            - shabbat_dinner
+        - condition: and
+          conditions:
+            - condition: trigger
+              id:
+                - shabbat_start
+            - condition: time
+              after: !input dinner_time
+          alias: Shabbat starts after dinnertime    
+    then:
+        sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ dinner_script_entities }}"
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: "{{ dinner_scene_entities }}"
+    alias: Dinner
+
+
+mode: queued

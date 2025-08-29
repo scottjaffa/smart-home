@@ -1,0 +1,51 @@
+blueprint:
+  name: Mini Shabbat Mode
+  description: >
+    # 🕎 Shabbat Mode
+
+    **Version: .1**
+
+
+    Shabbat Mode master automation
+
+    Requires the Jewish Calendar integration
+
+    <details>
+    <summary>How it works:</summary>
+
+
+      - **Trigger:**
+        - Going to be lots of description here
+    </details>
+
+
+    Welcome to reach out for questions.
+
+
+    Required = *
+  domain: automation
+  input:
+    enable_start_schedule:
+      name: Enable start schedule
+      selector:
+        boolean:
+
+
+
+
+variables:
+
+
+
+triggers:
+  - trigger: time
+    at: "18:00:00"
+    id: start
+    enabled: !input enable_start_schedule
+    
+condition:
+  - condition: trigger
+    id:
+      - start
+
+mode: single
