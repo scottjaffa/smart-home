@@ -2,7 +2,7 @@
 
 ## About
 
-Shabbat mode is a set of Home Assistant blueprints which reduces the need to spend time before Shabbat (Jewish sabbath) or and Yom Tov (Jewish holidays) adjusting lights and settings.  It configures a house at the start/end of Shabbat or Yom Tov and automating actions during Shabbat or Yom Tov.  It is designed to be simple yet flexible.  
+Shabbat mode is a set of Home Assistant blueprints which reduces the need to spend time before Shabbat (Jewish sabbath) and/or Yom Tov (Jewish holidays) adjusting lights and settings.  It configures a house at the start/end of Shabbat or Yom Tov and automating actions during Shabbat or Yom Tov.  It is designed to be simple yet flexible.  
 
 It adjusts each week for candlelighting times and automatically runs regardless of day of week (for Yom Tov).
 
@@ -63,7 +63,7 @@ Optionally, set a no later than start time by enabling early Shabbat mode, set t
 ### Shabbat Mode
 Shabbat Mode is an automation which runs the house when Shabbat mode is active.  It uses a binary or boolean sensor to denote when to run.  Default is "Shabbat Active".
 For start and end, select scripts and scenes to run (note that scripts run before scenes).
-For each each schedule, select whether it is active, what time it runs at, and the scripts and/or scenes to run.
+For each schedule, select whether it is active, what time it runs at, and the scripts and/or scenes to run.
 The configurable schedules are:
 
   | Schedule  | Notes |
