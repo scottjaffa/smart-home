@@ -1070,7 +1070,6 @@ actions:
             data: {}
             target:
               entity_id: !input warming_devices
-        sequence:
           - action: script.turn_on
             metadata: {}
             data: {}
