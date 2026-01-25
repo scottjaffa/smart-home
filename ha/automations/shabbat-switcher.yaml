@@ -141,10 +141,11 @@ actions:
                       - condition: state
                         entity_id: binary_sensor.jewish_calendar_erev_shabbat_hag
                         state: "on"
-              - condition: state
-                entity_id: !input shabbat_disable
-                state: "off"
-                match: any
+              - condition: not
+                conditions:
+                  - condition: template
+                    value_template: |
+                      {{states(!input shabbat_disable) == 'on' }}
         sequence:
           - action: input_boolean.turn_on
             metadata: {}
