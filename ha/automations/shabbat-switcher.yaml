@@ -145,7 +145,7 @@ actions:
                 conditions:
                   - condition: template
                     value_template: |
-                      {{states(!input shabbat_disable) == 'on' }}
+                      {{states(shabbat_disable) == 'on' }}
         sequence:
           - action: input_boolean.turn_on
             metadata: {}
