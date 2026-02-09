@@ -3,7 +3,8 @@ blueprint:
   description: >
     # 🕎 Shabbat Switcher
 
-    **Version: .1**
+    **Version: .11**
+    Change from .1: The shabbat_disable has changed - redeploy blueprint or manually change your configuration.
 
     Automation that evaluates conditions and switches HA to Shabbat Mode
 
