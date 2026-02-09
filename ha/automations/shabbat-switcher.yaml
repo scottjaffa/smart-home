@@ -121,6 +121,9 @@ triggers:
   - trigger: time
     at: !input early_start_time
     id: early_shabbat_on
+  - trigger: homeassistant
+    event: start
+    id: ha_start
 conditions: []
 actions:
   - choose:
@@ -139,7 +142,7 @@ actions:
                           - early_shabbat_on
                       - "{{ enable_early_shabbat == 'early_shabbat_enabled' }}"   
                       - condition: state
-                        entity_id: binary_sensor.jewish_calendar_erev_shabbat_hag
+                        entity_id: !input erev_sensor
                         state: "on"
               - condition: not
                 conditions:
@@ -161,5 +164,39 @@ actions:
             metadata: {}
             data: {}
             target:
-              entity_id: !input shabbat_status
+              entity_id: !input shabbat_status      
+      - conditions:
+          - condition: trigger
+            id:
+              - ha_start
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: and
+                    conditions:
+                      - condition: state
+                        entity_id: !input shabbat_trigger
+                        state:
+                          - "on"
+                      - condition: not
+                        conditions:
+                          - condition: template
+                            value_template: "{{states(shabbat_disable) == 'on' }}"
+                sequence:
+                  - action: input_boolean.turn_on
+                    metadata: {}
+                    target:
+                      entity_id: !input shabbat_status
+                    data: {}
+              - conditions:
+                  - condition: state
+                    entity_id: !input shabbat_trigger
+                    state:
+                      - "off"
+                sequence:
+                  - action: input_boolean.turn_off
+                    metadata: {}
+                    target:
+                      entity_id: !input shabbat_status
+                    data: {}
     default: []  
