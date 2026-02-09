@@ -3,7 +3,8 @@ blueprint:
   description: >
     # 🕎 Shabbat Switcher
 
-    **Version: .1**
+    **Version: .11**
+    Change from .1: The shabbat_disable has changed - redeploy blueprint or manually change your configuration.
 
     Automation that evaluates conditions and switches HA to Shabbat Mode
 
@@ -50,15 +51,14 @@ blueprint:
       name: Disable Shabbat Mode (Optional)
       description: >
         Entities which prevent the Shabbat mode from activating
-      default: 
-        - input_boolean.away
+      default: input_boolean.away
       selector:
         entity:
           filter:
             domain:
               - input_boolean
               - binary_sensor
-          multiple: true
+          multiple: false
     enable_early_shabbat:
       name: Early Shabbat Mode (Optional)
       description: >
@@ -141,10 +141,11 @@ actions:
                       - condition: state
                         entity_id: binary_sensor.jewish_calendar_erev_shabbat_hag
                         state: "on"
-              - condition: state
-                entity_id: !input shabbat_disable
-                state: "off"
-                match: any
+              - condition: not
+                conditions:
+                  - condition: template
+                    value_template: |
+                      {{states(shabbat_disable) == 'on' }}
         sequence:
           - action: input_boolean.turn_on
             metadata: {}
